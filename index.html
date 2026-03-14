@@ -1,28 +1,152 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Site</title>
+    <title>Pinnacles Hut Availability</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1{
+            margin-bottom: 10px;
+        }
+
+        #calendar{
+            margin-top: 20px;
+        }
+
+        .available{
+            background:#4CAF50 !important;
+            color:white !important;
+        }
+
+        .low{
+            background:#FF9800 !important;
+            color:white !important;
+        }
+
+        .full{
+            background:#F44336 !important;
+            color:white !important;
+        }
+
+        #info{
+            margin-top:20px;
+            font-size:18px;
+        }
+
+        .legend{
+            margin-top:20px;
+            display:flex;
+            justify-content:center;
+            gap:20px;
+        }
+
+        .legend div{
+            display:flex;
+            align-items:center;
+            gap:6px;
+        }
+
+        .box{
+            width:14px;
+            height:14px;
+            border-radius:3px;
+        }
+
+        .green{background:#4CAF50}
+        .orange{background:#FF9800}
+        .red{background:#F44336}
+
+    </style>
 </head>
+
 <body>
-<h1>Data</h1>
-<pre id="output">Loading...</pre>
+
+<h1>Pinnacles Hut Availability</h1>
+
+<div id="calendar"></div>
+
+<div id="info">Click a day to see availability</div>
+
+<div class="legend">
+    <div><span class="box green"></span> plenty</div>
+    <div><span class="box orange"></span> few left</div>
+    <div><span class="box red"></span> full</div>
+</div>
 
 <script>
-    fetch("./data.json")
-        .then((r) => {
-            if (!r.ok) throw new Error("Failed to load data.json");
-            return r.json();
+
+    fetch("./data.json?t=" + Date.now())
+        .then(r => r.json())
+        .then(data => {
+
+            const dates = data.Facility.Dates
+
+            const dateMap = {}
+
+            for (const key in dates){
+                const d = dates[key]
+                dateMap[d.Date] = d
+            }
+
+            flatpickr("#calendar",{
+
+                inline:true,
+
+                onDayCreate:function(dObj,dStr,fp,dayElem){
+
+                    const date = dayElem.dateObj.toISOString().slice(0,10)
+
+                    const d = dateMap[date]
+
+                    if(!d) return
+
+                    if(!d.IsAvailable){
+                        dayElem.classList.add("full")
+                    }
+                    else if(d.TotalAvailable < 10){
+                        dayElem.classList.add("low")
+                    }
+                    else{
+                        dayElem.classList.add("available")
+                    }
+
+                },
+
+                onChange:function(selectedDates){
+
+                    if(!selectedDates.length) return
+
+                    const date = selectedDates[0].toISOString().slice(0,10)
+
+                    const d = dateMap[date]
+
+                    if(!d){
+                        document.getElementById("info").innerText =
+                            "No data for this date"
+                        return
+                    }
+
+                    document.getElementById("info").innerText =
+                        date + " — " + d.TotalAvailable + " places available"
+
+                }
+
+            })
+
         })
-        .then((data) => {
-            document.getElementById("output").textContent =
-                JSON.stringify(data, null, 2);
-        })
-        .catch((err) => {
-            document.getElementById("output").textContent =
-                "Error: " + err.message;
-        });
+
 </script>
+
 </body>
 </html>

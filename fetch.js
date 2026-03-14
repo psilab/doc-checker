@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 async function run() {
-    const url = "https://prod-nz-rdr.recreation-management.tylerapp.com/nzrdr/rdr/search/occupancygrid/2422/startdate/2026-03-22/nights/7/1";
+    const url = "https://prod-nz-rdr.recreation-management.tylerapp.com/nzrdr/rdr/search/occupancygrid/2422/startdate/2026-03-22/nights/90/1";
 
     const res = await fetch(url, {
         headers: {
