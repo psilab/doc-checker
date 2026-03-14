@@ -85,6 +85,11 @@
             color:white !important;
         }
 
+        .watched{
+            outline: 2px solid #1565C0 !important;
+            outline-offset: -2px;
+        }
+
         .legend{
             margin-top: 30px;
             display: flex;
@@ -197,14 +202,18 @@
                         const date = localDate(dayElem.dateObj);
                         const d = dateMap[date];
 
-                        if (!d) return;
+                        if (d) {
+                            if (!d.IsAvailable){
+                                dayElem.classList.add("full");
+                            } else if (d.TotalAvailable < 10){
+                                dayElem.classList.add("low");
+                            } else {
+                                dayElem.classList.add("available");
+                            }
+                        }
 
-                        if (!d.IsAvailable){
-                            dayElem.classList.add("full");
-                        } else if (d.TotalAvailable < 10){
-                            dayElem.classList.add("low");
-                        } else {
-                            dayElem.classList.add("available");
+                        if (hut.watchDates.includes(date)){
+                            dayElem.classList.add("watched");
                         }
 
                     }
