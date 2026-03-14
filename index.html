@@ -168,7 +168,7 @@
             String(d.getDate()).padStart(2, "0");
     }
 
-    function loadHut(hut) {
+    function loadHut(hut, container) {
         fetch(`./data/${hut.id}.json?t=` + Date.now())
             .then(r => r.json())
             .then(data => {
@@ -183,17 +183,8 @@
                     dateMap[d.Date] = d;
                 }
 
-                const container = document.createElement("div");
-                container.className = "hut";
-
-                const title = document.createElement("h2");
-                title.textContent = hut.name;
-
                 const cal = document.createElement("div");
-
-                container.appendChild(title);
                 container.appendChild(cal);
-                document.getElementById("huts").appendChild(container);
 
                 const fp = flatpickr(cal, {
 
@@ -232,7 +223,13 @@
         .then(config => {
             const sorted = [...config.huts].sort((a, b) => a.name.localeCompare(b.name));
             for (const hut of sorted){
-                loadHut(hut);
+                const container = document.createElement("div");
+                container.className = "hut";
+                const title = document.createElement("h2");
+                title.textContent = hut.name;
+                container.appendChild(title);
+                document.getElementById("huts").appendChild(container);
+                loadHut(hut, container);
             }
         });
 
