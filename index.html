@@ -230,7 +230,8 @@
     fetch("./config.json?t=" + Date.now())
         .then(r => r.json())
         .then(config => {
-            for (const hut of config.huts){
+            const sorted = [...config.huts].sort((a, b) => a.name.localeCompare(b.name));
+            for (const hut of sorted){
                 loadHut(hut);
             }
         });
