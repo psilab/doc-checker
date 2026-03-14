@@ -32,9 +32,17 @@ jobs:
           node-version: 24
 
       - name: Fetch latest data
-        run: node fetch.js
+        run: |
+          cp data.json data.old.json
+          node fetch.js
         env:
           API_BASE_URL: ${{ vars.API_BASE_URL }}
+
+      - name: Notify Telegram on freed dates
+        run: node notify.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ vars.TELEGRAM_CHAT_ID }}
 
       - name: Commit only if data changed
         run: |
