@@ -11,7 +11,7 @@
 
         body{
             font-family: Arial, sans-serif;
-            max-width: 900px;
+            max-width: 1600px;
             margin: 40px auto;
             text-align: center;
         }
@@ -52,11 +52,6 @@
             color:white !important;
         }
 
-        .info{
-            margin-top: 10px;
-            font-size: 16px;
-            min-height: 24px;
-        }
 
         .legend{
             margin-top: 30px;
@@ -127,13 +122,8 @@
 
                 const cal = document.createElement("div");
 
-                const info = document.createElement("div");
-                info.className = "info";
-                info.textContent = "Click a day to see availability";
-
                 container.appendChild(title);
                 container.appendChild(cal);
-                container.appendChild(info);
                 document.getElementById("huts").appendChild(container);
 
                 flatpickr(cal, {
@@ -158,18 +148,6 @@
 
                     },
 
-                    onChange: function(selectedDates){
-
-                        if (!selectedDates.length) return;
-
-                        const date = localDate(selectedDates[0]);
-                        const d = dateMap[date];
-
-                        info.textContent = d
-                            ? date + " — " + d.TotalAvailable + " places available"
-                            : "No data for this date";
-
-                    }
 
                 });
 
