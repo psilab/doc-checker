@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pinnacles Hut Availability</title>
+    <title>Hut Availability</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -18,6 +18,12 @@
 
         h1{
             margin-bottom: 10px;
+        }
+
+        select{
+            margin-top: 10px;
+            font-size: 16px;
+            padding: 6px 12px;
         }
 
         #calendar{
@@ -72,7 +78,9 @@
 
 <body>
 
-<h1>Pinnacles Hut Availability</h1>
+<h1>Hut Availability</h1>
+
+<select id="hutSelect"></select>
 
 <div id="calendar"></div>
 
@@ -86,63 +94,91 @@
 
 <script>
 
-    fetch("./data.json?t=" + Date.now())
-        .then(r => r.json())
-        .then(data => {
+    let fp = null;
 
-            const dates = data.Facility.Dates
+    function loadHut(hutId) {
+        fetch(`./data/${hutId}.json?t=` + Date.now())
+            .then(r => r.json())
+            .then(data => {
 
-            const dateMap = {}
+                const dates = data.Facility.Dates
 
-            for (const key in dates){
-                const d = dates[key]
-                dateMap[d.Date] = d
-            }
+                const dateMap = {}
 
-            flatpickr("#calendar",{
-
-                inline:true,
-
-                onDayCreate:function(dObj,dStr,fp,dayElem){
-
-                    const date = dayElem.dateObj.toISOString().slice(0,10)
-
-                    const d = dateMap[date]
-
-                    if(!d) return
-
-                    if(!d.IsAvailable){
-                        dayElem.classList.add("full")
-                    }
-                    else if(d.TotalAvailable < 10){
-                        dayElem.classList.add("low")
-                    }
-                    else{
-                        dayElem.classList.add("available")
-                    }
-
-                },
-
-                onChange:function(selectedDates){
-
-                    if(!selectedDates.length) return
-
-                    const date = selectedDates[0].toISOString().slice(0,10)
-
-                    const d = dateMap[date]
-
-                    if(!d){
-                        document.getElementById("info").innerText =
-                            "No data for this date"
-                        return
-                    }
-
-                    document.getElementById("info").innerText =
-                        date + " — " + d.TotalAvailable + " places available"
-
+                for (const key in dates){
+                    const d = dates[key]
+                    dateMap[d.Date] = d
                 }
 
+                if (fp) fp.destroy();
+
+                fp = flatpickr("#calendar", {
+
+                    inline: true,
+
+                    onDayCreate: function(dObj, dStr, fp, dayElem){
+
+                        const date = dayElem.dateObj.toISOString().slice(0, 10)
+
+                        const d = dateMap[date]
+
+                        if (!d) return
+
+                        if (!d.IsAvailable){
+                            dayElem.classList.add("full")
+                        }
+                        else if (d.TotalAvailable < 10){
+                            dayElem.classList.add("low")
+                        }
+                        else{
+                            dayElem.classList.add("available")
+                        }
+
+                    },
+
+                    onChange: function(selectedDates){
+
+                        if (!selectedDates.length) return
+
+                        const date = selectedDates[0].toISOString().slice(0, 10)
+
+                        const d = dateMap[date]
+
+                        if (!d){
+                            document.getElementById("info").innerText =
+                                "No data for this date"
+                            return
+                        }
+
+                        document.getElementById("info").innerText =
+                            date + " — " + d.TotalAvailable + " places available"
+
+                    }
+
+                })
+
             })
+    }
+
+    fetch("./config.json?t=" + Date.now())
+        .then(r => r.json())
+        .then(config => {
+
+            const select = document.getElementById("hutSelect")
+
+            for (const hut of config.huts){
+                const opt = document.createElement("option")
+                opt.value = hut.id
+                opt.textContent = hut.name
+                select.appendChild(opt)
+            }
+
+            select.addEventListener("change", () => {
+                document.getElementById("info").innerText = "Click a day to see availability"
+                loadHut(select.value)
+            })
+
+            if (config.huts.length) loadHut(config.huts[0].id)
 
         })
 

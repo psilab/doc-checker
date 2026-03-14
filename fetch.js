@@ -1,11 +1,16 @@
 const fs = require("fs");
 
-async function run() {
-    const base = process.env.API_BASE_URL;
-    if (!base) throw new Error("API_BASE_URL is not set");
+const { huts } = JSON.parse(fs.readFileSync("config.json", "utf8"));
 
-    const today = new Date().toISOString().slice(0, 10);
-    const url = `${base}/startdate/${today}/nights/90/1`;
+const base = process.env.API_BASE_URL;
+if (!base) throw new Error("API_BASE_URL is not set");
+
+const today = new Date().toISOString().slice(0, 10);
+
+fs.mkdirSync("data", { recursive: true });
+
+async function fetchHut(hut) {
+    const url = `${base}/${hut.id}/startdate/${today}/nights/90/1`;
 
     const res = await fetch(url, {
         headers: {
@@ -17,32 +22,31 @@ async function run() {
         }
     });
 
-    console.log("Status:", res.status, res.statusText);
+    console.log(`[${hut.name}] Status:`, res.status, res.statusText);
 
     const text = await res.text();
-    console.log("Raw response preview:", text.slice(0, 500));
 
-    if (!res.ok) {
-        throw new Error(`API error: ${res.status} ${res.statusText}`);
-    }
-
-    if (!text.trim()) {
-        throw new Error("API returned empty response");
-    }
+    if (!res.ok) throw new Error(`[${hut.name}] API error: ${res.status} ${res.statusText}`);
+    if (!text.trim()) throw new Error(`[${hut.name}] API returned empty response`);
 
     let data;
     try {
         data = JSON.parse(text);
     } catch (err) {
-        console.error("Response is not valid JSON:");
-        console.error(text);
+        console.error(`[${hut.name}] Response is not valid JSON:`, text);
         throw err;
     }
 
     delete data.Message;
 
-    fs.writeFileSync("data.json", JSON.stringify(data, null, 2) + "\n");
-    console.log("data.json updated");
+    fs.writeFileSync(`data/${hut.id}.json`, JSON.stringify(data, null, 2) + "\n");
+    console.log(`[${hut.name}] data/${hut.id}.json updated`);
+}
+
+async function run() {
+    for (const hut of huts) {
+        await fetchHut(hut);
+    }
 }
 
 run().catch((err) => {
