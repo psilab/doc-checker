@@ -116,11 +116,15 @@
                     dateMap[d.Date] = d
                 }
 
+                const currentDate = fp ? new Date(fp.currentYear, fp.currentMonth, 1) : null;
+
                 if (fp) fp.destroy();
 
                 fp = flatpickr("#calendar", {
 
                     inline: true,
+                    locale: { firstDayOfWeek: 1 },
+                    defaultDate: currentDate || new Date(),
 
                     onDayCreate: function(dObj, dStr, fp, dayElem){
 
