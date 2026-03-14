@@ -94,6 +94,12 @@
 
 <script>
 
+    function localDate(d) {
+        return d.getFullYear() + "-" +
+            String(d.getMonth() + 1).padStart(2, "0") + "-" +
+            String(d.getDate()).padStart(2, "0");
+    }
+
     let fp = null;
 
     function loadHut(hutId) {
@@ -118,7 +124,7 @@
 
                     onDayCreate: function(dObj, dStr, fp, dayElem){
 
-                        const date = dayElem.dateObj.toISOString().slice(0, 10)
+                        const date = localDate(dayElem.dateObj)
 
                         const d = dateMap[date]
 
@@ -140,7 +146,7 @@
 
                         if (!selectedDates.length) return
 
-                        const date = selectedDates[0].toISOString().slice(0, 10)
+                        const date = localDate(selectedDates[0])
 
                         const d = dateMap[date]
 
