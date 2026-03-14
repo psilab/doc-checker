@@ -87,8 +87,8 @@
       },
       "2026-03-17T00:00:00": {
         "Date": "2026-03-17",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
+        "IsAvailable": true,
+        "TotalAvailable": 38,
         "TotalAvailableUnit": 75,
         "MaxOccupancy": 78,
         "UnitCount": 82,
