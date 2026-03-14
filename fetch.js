@@ -1,7 +1,11 @@
 const fs = require("fs");
 
 async function run() {
-    const url = "https://prod-nz-rdr.recreation-management.tylerapp.com/nzrdr/rdr/search/occupancygrid/2422/startdate/2026-03-22/nights/90/1";
+    const base = process.env.API_BASE_URL;
+    if (!base) throw new Error("API_BASE_URL is not set");
+
+    const today = new Date().toISOString().slice(0, 10);
+    const url = `${base}/startdate/${today}/nights/90/1`;
 
     const res = await fetch(url, {
         headers: {

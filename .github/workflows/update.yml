@@ -33,6 +33,8 @@ jobs:
 
       - name: Fetch latest data
         run: node fetch.js
+        env:
+          API_BASE_URL: ${{ vars.API_BASE_URL }}
 
       - name: Commit only if data changed
         run: |
