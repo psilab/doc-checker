@@ -35,6 +35,8 @@ async function run() {
         throw err;
     }
 
+    delete data.Message;
+
     fs.writeFileSync("data.json", JSON.stringify(data, null, 2) + "\n");
     console.log("data.json updated");
 }
