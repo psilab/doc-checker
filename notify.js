@@ -22,10 +22,16 @@ async function checkHut(hut) {
     const oldPath = `data.old/${hut.id}.json`;
     const newPath = `data/${hut.id}.json`;
 
-    if (!fs.existsSync(oldPath) || !hut.watchDates.length) return;
+    if (!hut.watchDates.length) return;
+    if (!fs.existsSync(oldPath)) return;
 
-    const oldDates = JSON.parse(fs.readFileSync(oldPath, "utf8")).Facility.Dates;
-    const newDates = JSON.parse(fs.readFileSync(newPath, "utf8")).Facility.Dates;
+    const oldJson = JSON.parse(fs.readFileSync(oldPath, "utf8"));
+    const newJson = JSON.parse(fs.readFileSync(newPath, "utf8"));
+
+    if (!oldJson?.Facility?.Dates || !newJson?.Facility?.Dates) return;
+
+    const oldDates = oldJson.Facility.Dates;
+    const newDates = newJson.Facility.Dates;
 
     const freed = hut.watchDates.filter(date => {
         const oldEntry = Object.values(oldDates).find(d => d.Date === date);
