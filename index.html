@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Site</title>
+</head>
+<body>
+<h1>Data</h1>
+<pre id="output">Loading...</pre>
+
+<script>
+    fetch("./data.json")
+        .then((r) => {
+            if (!r.ok) throw new Error("Failed to load data.json");
+            return r.json();
+        })
+        .then((data) => {
+            document.getElementById("output").textContent =
+                JSON.stringify(data, null, 2);
+        })
+        .catch((err) => {
+            document.getElementById("output").textContent =
+                "Error: " + err.message;
+        });
+</script>
+</body>
+</html>
