@@ -1,16 +1,22 @@
-name: Update data
+name: Update data and deploy Pages
 
 on:
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
-    permissions:
-      contents: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -19,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Fetch latest data
         run: node fetch.js
@@ -35,3 +41,14 @@ jobs:
             git commit -m "Update data.json"
             git push
           fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
