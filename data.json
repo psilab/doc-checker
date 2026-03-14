@@ -1,1 +1,148 @@
-{}
+{
+  "Message": "Built in 15.0072 ms size 2869 bytes on IP-AC121D0C",
+  "FacilityId": 2422,
+  "StartDate": "2026-03-22",
+  "EndDate": "2026-03-28",
+  "Facility": {
+    "FacilityId": 2422,
+    "Name": "Pinnacles Hut (Kauaeranga Kauri Trail) Coromandel",
+    "OrderBy": 0,
+    "FacilityType": 2,
+    "FacilityTypeNew": 3,
+    "Category": "Campgrounds",
+    "TotalUnitCount": 82,
+    "MasterMaxOccupancy": 78,
+    "EnableCheckOccupancy": true,
+    "TrafficStatuses": null,
+    "InSeason": true,
+    "DatesInSeason": 7,
+    "DatesOutOfSeason": 0,
+    "RestrictionIds": {
+      "PlaceId": 728,
+      "FacilityId": 2422,
+      "UnitCategoryIds": [
+        11
+      ],
+      "UnitTypeIds": [
+        108
+      ],
+      "PlaceRestrictions": [],
+      "FacilityRestrictions": [],
+      "CategoryRestrictions": [],
+      "TypeRestrictions": [],
+      "GlobalRestrictions": [
+        31,
+        1010
+      ]
+    },
+    "Restrictions": {
+      "FutureBookingStarts": "2026-02-21T00:00:00+13:00",
+      "FutureBookingEnds": "2027-09-14T00:00:00+12:00",
+      "FutureBookingStartsId": 31,
+      "FutureBookingEndsId": 1010,
+      "StrFutureBookingStartDate": "2026-02-21 00:00:00",
+      "StrFutureBookingEndDate": "2027-09-14 00:00:00"
+    },
+    "Dates": {
+      "2026-03-22T00:00:00": {
+        "Date": "2026-03-22",
+        "IsAvailable": true,
+        "TotalAvailable": 30,
+        "TotalAvailableUnit": 73,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 9,
+        "PersonCount": 48,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-23T00:00:00": {
+        "Date": "2026-03-23",
+        "IsAvailable": true,
+        "TotalAvailable": 4,
+        "TotalAvailableUnit": 74,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 8,
+        "PersonCount": 74,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-24T00:00:00": {
+        "Date": "2026-03-24",
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 80,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 2,
+        "PersonCount": 78,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-25T00:00:00": {
+        "Date": "2026-03-25",
+        "IsAvailable": true,
+        "TotalAvailable": 49,
+        "TotalAvailableUnit": 74,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 8,
+        "PersonCount": 29,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-26T00:00:00": {
+        "Date": "2026-03-26",
+        "IsAvailable": true,
+        "TotalAvailable": 24,
+        "TotalAvailableUnit": 75,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 7,
+        "PersonCount": 54,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-27T00:00:00": {
+        "Date": "2026-03-27",
+        "IsAvailable": true,
+        "TotalAvailable": 1,
+        "TotalAvailableUnit": 62,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 20,
+        "PersonCount": 77,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-03-28T00:00:00": {
+        "Date": "2026-03-28",
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 58,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 24,
+        "PersonCount": 78,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      }
+    },
+    "TimebaseMaxHours": 0
+  }
+}
