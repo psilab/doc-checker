@@ -203,7 +203,7 @@
                         const d = dateMap[date];
 
                         if (d) {
-                            if (!d.IsAvailable){
+                            if (!d.IsAvailable || d.TotalAvailable <= 1){
                                 dayElem.classList.add("full");
                             } else if (d.TotalAvailable < 10){
                                 dayElem.classList.add("low");
