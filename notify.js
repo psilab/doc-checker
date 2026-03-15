@@ -36,7 +36,7 @@ async function checkHut(hut) {
     const freed = hut.watchDates.filter(date => {
         const oldEntry = Object.values(oldDates).find(d => d.Date === date);
         const newEntry = Object.values(newDates).find(d => d.Date === date);
-        return oldEntry && newEntry && !oldEntry.IsAvailable && newEntry.IsAvailable;
+        return oldEntry && newEntry && !oldEntry.IsAvailable && newEntry.IsAvailable && newEntry.TotalAvailable > 1;
     });
 
     if (!freed.length) {
