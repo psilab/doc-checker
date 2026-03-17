@@ -74,13 +74,13 @@
       "2026-03-19T00:00:00": {
         "Date": "2026-03-19",
         "IsAvailable": true,
-        "TotalAvailable": 8,
-        "TotalAvailableUnit": 18,
+        "TotalAvailable": 6,
+        "TotalAvailableUnit": 17,
         "MaxOccupancy": 23,
         "UnitCount": 23,
         "ReservationCount": 5,
         "PersonCount": 15,
-        "LockCount": null,
+        "LockCount": 2,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
