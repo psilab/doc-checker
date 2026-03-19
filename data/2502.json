@@ -1,7 +1,7 @@
 {
   "FacilityId": 2502,
-  "StartDate": "2026-03-18",
-  "EndDate": "2026-06-15",
+  "StartDate": "2026-03-19",
+  "EndDate": "2026-06-16",
   "Facility": {
     "FacilityId": 2502,
     "Name": "Peach Cove Hut",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-09-19 00:00:00"
     },
     "Dates": {
-      "2026-03-18T00:00:00": {
-        "Date": "2026-03-18",
-        "IsAvailable": true,
-        "TotalAvailable": 5,
-        "TotalAvailableUnit": 7,
-        "MaxOccupancy": 8,
-        "UnitCount": 8,
-        "ReservationCount": 1,
-        "PersonCount": 3,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-03-19T00:00:00": {
         "Date": "2026-03-19",
         "IsAvailable": false,
@@ -1298,6 +1284,20 @@
         "UnitCount": 8,
         "ReservationCount": 1,
         "PersonCount": 8,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-06-16T00:00:00": {
+        "Date": "2026-06-16",
+        "IsAvailable": true,
+        "TotalAvailable": 8,
+        "TotalAvailableUnit": 8,
+        "MaxOccupancy": 8,
+        "UnitCount": 8,
+        "ReservationCount": 0,
+        "PersonCount": 0,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
