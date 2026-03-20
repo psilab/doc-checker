@@ -325,14 +325,14 @@
       },
       "2026-04-09T00:00:00": {
         "Date": "2026-04-09",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 9,
+        "IsAvailable": true,
+        "TotalAvailable": 10,
+        "TotalAvailableUnit": 10,
         "MaxOccupancy": 10,
         "UnitCount": 10,
         "ReservationCount": 0,
         "PersonCount": 0,
-        "LockCount": 10,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
