@@ -383,7 +383,7 @@
         "Date": "2026-04-18",
         "IsAvailable": false,
         "TotalAvailable": 0,
-        "TotalAvailableUnit": 12,
+        "TotalAvailableUnit": 13,
         "MaxOccupancy": 23,
         "UnitCount": 23,
         "ReservationCount": 10,
