@@ -507,14 +507,14 @@
       },
       "2026-05-01T00:00:00": {
         "Date": "2026-05-01",
-        "IsAvailable": true,
-        "TotalAvailable": 5,
-        "TotalAvailableUnit": 7,
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 6,
         "MaxOccupancy": 8,
         "UnitCount": 8,
         "ReservationCount": 1,
         "PersonCount": 3,
-        "LockCount": null,
+        "LockCount": 5,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
