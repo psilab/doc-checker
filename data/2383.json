@@ -159,7 +159,7 @@
         "Date": "2026-04-06",
         "IsAvailable": true,
         "TotalAvailable": 1,
-        "TotalAvailableUnit": 7,
+        "TotalAvailableUnit": 6,
         "MaxOccupancy": 10,
         "UnitCount": 10,
         "ReservationCount": 3,
