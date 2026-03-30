@@ -35,11 +35,11 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-03-09T00:00:00+13:00",
+      "FutureBookingStarts": "2026-03-10T00:00:00+13:00",
       "FutureBookingEnds": "2027-09-30T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-03-09 00:00:00",
+      "StrFutureBookingStartDate": "2026-03-10 00:00:00",
       "StrFutureBookingEndDate": "2027-09-30 00:00:00"
     },
     "Dates": {
