@@ -1,7 +1,7 @@
 {
   "FacilityId": 2374,
-  "StartDate": "2026-04-03",
-  "EndDate": "2026-07-01",
+  "StartDate": "2026-04-04",
+  "EndDate": "2026-07-02",
   "Facility": {
     "FacilityId": 2374,
     "Name": "Cape Brett Hut",
@@ -14,8 +14,8 @@
     "EnableCheckOccupancy": true,
     "TrafficStatuses": null,
     "InSeason": true,
-    "DatesInSeason": 89,
-    "DatesOutOfSeason": 1,
+    "DatesInSeason": 88,
+    "DatesOutOfSeason": 2,
     "RestrictionIds": {
       "PlaceId": 709,
       "FacilityId": 2374,
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-10-04 00:00:00"
     },
     "Dates": {
-      "2026-04-03T00:00:00": {
-        "Date": "2026-04-03",
-        "IsAvailable": true,
-        "TotalAvailable": 1,
-        "TotalAvailableUnit": 13,
-        "MaxOccupancy": 23,
-        "UnitCount": 23,
-        "ReservationCount": 10,
-        "PersonCount": 22,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-04-04T00:00:00": {
         "Date": "2026-04-04",
         "IsAvailable": true,
@@ -186,12 +172,12 @@
       "2026-04-13T00:00:00": {
         "Date": "2026-04-13",
         "IsAvailable": true,
-        "TotalAvailable": 19,
-        "TotalAvailableUnit": 20,
+        "TotalAvailable": 16,
+        "TotalAvailableUnit": 19,
         "MaxOccupancy": 23,
         "UnitCount": 23,
-        "ReservationCount": 3,
-        "PersonCount": 4,
+        "ReservationCount": 4,
+        "PersonCount": 7,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1291,6 +1277,20 @@
       },
       "2026-07-01T00:00:00": {
         "Date": "2026-07-01",
+        "IsAvailable": false,
+        "TotalAvailable": 23,
+        "TotalAvailableUnit": 0,
+        "MaxOccupancy": 23,
+        "UnitCount": 0,
+        "ReservationCount": 0,
+        "PersonCount": null,
+        "LockCount": null,
+        "InSeason": false,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-07-02T00:00:00": {
+        "Date": "2026-07-02",
         "IsAvailable": false,
         "TotalAvailable": 23,
         "TotalAvailableUnit": 0,
