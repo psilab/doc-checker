@@ -144,13 +144,13 @@
       "2026-04-12T00:00:00": {
         "Date": "2026-04-12",
         "IsAvailable": true,
-        "TotalAvailable": 1,
-        "TotalAvailableUnit": 5,
+        "TotalAvailable": 5,
+        "TotalAvailableUnit": 6,
         "MaxOccupancy": 8,
         "UnitCount": 8,
         "ReservationCount": 2,
         "PersonCount": 3,
-        "LockCount": 4,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
