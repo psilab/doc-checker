@@ -1,7 +1,7 @@
 {
   "FacilityId": 2383,
-  "StartDate": "2026-04-05",
-  "EndDate": "2026-07-03",
+  "StartDate": "2026-04-06",
+  "EndDate": "2026-07-04",
   "Facility": {
     "FacilityId": 2383,
     "Name": "Crosbies Hut",
@@ -14,8 +14,8 @@
     "EnableCheckOccupancy": true,
     "TrafficStatuses": null,
     "InSeason": true,
-    "DatesInSeason": 87,
-    "DatesOutOfSeason": 3,
+    "DatesInSeason": 86,
+    "DatesOutOfSeason": 4,
     "RestrictionIds": {
       "PlaceId": 714,
       "FacilityId": 2383,
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-10-06 00:00:00"
     },
     "Dates": {
-      "2026-04-05T00:00:00": {
-        "Date": "2026-04-05",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 4,
-        "MaxOccupancy": 10,
-        "UnitCount": 10,
-        "ReservationCount": 6,
-        "PersonCount": 10,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-04-06T00:00:00": {
         "Date": "2026-04-06",
         "IsAvailable": true,
@@ -984,12 +970,12 @@
       "2026-06-11T00:00:00": {
         "Date": "2026-06-11",
         "IsAvailable": true,
-        "TotalAvailable": 10,
-        "TotalAvailableUnit": 10,
+        "TotalAvailable": 5,
+        "TotalAvailableUnit": 9,
         "MaxOccupancy": 10,
         "UnitCount": 10,
-        "ReservationCount": 0,
-        "PersonCount": 0,
+        "ReservationCount": 1,
+        "PersonCount": 5,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1291,6 +1277,20 @@
       },
       "2026-07-03T00:00:00": {
         "Date": "2026-07-03",
+        "IsAvailable": false,
+        "TotalAvailable": 10,
+        "TotalAvailableUnit": 0,
+        "MaxOccupancy": 10,
+        "UnitCount": 0,
+        "ReservationCount": 0,
+        "PersonCount": null,
+        "LockCount": null,
+        "InSeason": false,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-07-04T00:00:00": {
+        "Date": "2026-07-04",
         "IsAvailable": false,
         "TotalAvailable": 10,
         "TotalAvailableUnit": 0,
