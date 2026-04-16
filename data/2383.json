@@ -92,9 +92,9 @@
         "TotalAvailableUnit": 9,
         "MaxOccupancy": 10,
         "UnitCount": 10,
-        "ReservationCount": 1,
-        "PersonCount": 2,
-        "LockCount": null,
+        "ReservationCount": 0,
+        "PersonCount": 0,
+        "LockCount": 2,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
