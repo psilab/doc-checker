@@ -284,13 +284,13 @@
       "2026-05-07T00:00:00": {
         "Date": "2026-05-07",
         "IsAvailable": true,
-        "TotalAvailable": 71,
-        "TotalAvailableUnit": 79,
+        "TotalAvailable": 73,
+        "TotalAvailableUnit": 80,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 2,
         "PersonCount": 5,
-        "LockCount": 2,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
