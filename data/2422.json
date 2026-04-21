@@ -186,13 +186,13 @@
       "2026-05-01T00:00:00": {
         "Date": "2026-05-01",
         "IsAvailable": true,
-        "TotalAvailable": 46,
-        "TotalAvailableUnit": 73,
+        "TotalAvailable": 51,
+        "TotalAvailableUnit": 74,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 8,
         "PersonCount": 27,
-        "LockCount": 5,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
