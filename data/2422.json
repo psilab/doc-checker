@@ -94,7 +94,7 @@
         "UnitCount": 82,
         "ReservationCount": 31,
         "PersonCount": 78,
-        "LockCount": null,
+        "LockCount": 0,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
