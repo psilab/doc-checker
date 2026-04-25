@@ -550,13 +550,13 @@
       "2026-05-31T00:00:00": {
         "Date": "2026-05-31",
         "IsAvailable": true,
-        "TotalAvailable": 8,
-        "TotalAvailableUnit": 8,
+        "TotalAvailable": 4,
+        "TotalAvailableUnit": 6,
         "MaxOccupancy": 8,
         "UnitCount": 8,
-        "ReservationCount": 0,
-        "PersonCount": 0,
-        "LockCount": null,
+        "ReservationCount": 1,
+        "PersonCount": 2,
+        "LockCount": 2,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
