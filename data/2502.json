@@ -1,7 +1,7 @@
 {
   "FacilityId": 2502,
-  "StartDate": "2026-04-30",
-  "EndDate": "2026-07-28",
+  "StartDate": "2026-05-01",
+  "EndDate": "2026-07-29",
   "Facility": {
     "FacilityId": 2502,
     "Name": "Peach Cove Hut",
@@ -14,8 +14,8 @@
     "EnableCheckOccupancy": true,
     "TrafficStatuses": null,
     "InSeason": true,
-    "DatesInSeason": 62,
-    "DatesOutOfSeason": 28,
+    "DatesInSeason": 61,
+    "DatesOutOfSeason": 29,
     "RestrictionIds": {
       "PlaceId": 753,
       "FacilityId": 2502,
@@ -43,29 +43,15 @@
       "StrFutureBookingEndDate": "2027-11-01 00:00:00"
     },
     "Dates": {
-      "2026-04-30T00:00:00": {
-        "Date": "2026-04-30",
-        "IsAvailable": true,
-        "TotalAvailable": 2,
-        "TotalAvailableUnit": 6,
-        "MaxOccupancy": 8,
-        "UnitCount": 8,
-        "ReservationCount": 2,
-        "PersonCount": 6,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-05-01T00:00:00": {
         "Date": "2026-05-01",
-        "IsAvailable": true,
-        "TotalAvailable": 1,
-        "TotalAvailableUnit": 5,
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 4,
         "MaxOccupancy": 8,
         "UnitCount": 8,
-        "ReservationCount": 3,
-        "PersonCount": 7,
+        "ReservationCount": 4,
+        "PersonCount": 8,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1291,6 +1277,20 @@
       },
       "2026-07-28T00:00:00": {
         "Date": "2026-07-28",
+        "IsAvailable": false,
+        "TotalAvailable": 8,
+        "TotalAvailableUnit": 0,
+        "MaxOccupancy": 8,
+        "UnitCount": 0,
+        "ReservationCount": 0,
+        "PersonCount": null,
+        "LockCount": null,
+        "InSeason": false,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-07-29T00:00:00": {
+        "Date": "2026-07-29",
         "IsAvailable": false,
         "TotalAvailable": 8,
         "TotalAvailableUnit": 0,
