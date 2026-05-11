@@ -395,14 +395,14 @@
       },
       "2026-06-05T00:00:00": {
         "Date": "2026-06-05",
-        "IsAvailable": true,
-        "TotalAvailable": 23,
-        "TotalAvailableUnit": 23,
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 22,
         "MaxOccupancy": 23,
         "UnitCount": 23,
         "ReservationCount": 0,
         "PersonCount": 0,
-        "LockCount": null,
+        "LockCount": 23,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
