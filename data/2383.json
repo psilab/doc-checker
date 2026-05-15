@@ -1,7 +1,7 @@
 {
   "FacilityId": 2383,
-  "StartDate": "2026-05-14",
-  "EndDate": "2026-08-11",
+  "StartDate": "2026-05-15",
+  "EndDate": "2026-08-12",
   "Facility": {
     "FacilityId": 2383,
     "Name": "Crosbies Hut",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-11-15 00:00:00"
     },
     "Dates": {
-      "2026-05-14T00:00:00": {
-        "Date": "2026-05-14",
-        "IsAvailable": true,
-        "TotalAvailable": 10,
-        "TotalAvailableUnit": 10,
-        "MaxOccupancy": 10,
-        "UnitCount": 10,
-        "ReservationCount": 0,
-        "PersonCount": 0,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-05-15T00:00:00": {
         "Date": "2026-05-15",
         "IsAvailable": true,
@@ -1291,6 +1277,20 @@
       },
       "2026-08-11T00:00:00": {
         "Date": "2026-08-11",
+        "IsAvailable": true,
+        "TotalAvailable": 10,
+        "TotalAvailableUnit": 10,
+        "MaxOccupancy": 10,
+        "UnitCount": 10,
+        "ReservationCount": 0,
+        "PersonCount": 0,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-08-12T00:00:00": {
+        "Date": "2026-08-12",
         "IsAvailable": true,
         "TotalAvailable": 10,
         "TotalAvailableUnit": 10,
