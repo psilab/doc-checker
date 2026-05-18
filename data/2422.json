@@ -35,12 +35,12 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-04-27T00:00:00+12:00",
-      "FutureBookingEnds": "2027-11-18T00:00:00+13:00",
+      "FutureBookingStarts": "2026-04-28T00:00:00+12:00",
+      "FutureBookingEnds": "2027-11-19T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-04-27 00:00:00",
-      "StrFutureBookingEndDate": "2027-11-18 00:00:00"
+      "StrFutureBookingStartDate": "2026-04-28 00:00:00",
+      "StrFutureBookingEndDate": "2027-11-19 00:00:00"
     },
     "Dates": {
       "2026-05-18T00:00:00": {
@@ -102,12 +102,12 @@
       "2026-05-22T00:00:00": {
         "Date": "2026-05-22",
         "IsAvailable": true,
-        "TotalAvailable": 63,
-        "TotalAvailableUnit": 74,
+        "TotalAvailable": 61,
+        "TotalAvailableUnit": 73,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 8,
-        "PersonCount": 15,
+        "ReservationCount": 9,
+        "PersonCount": 17,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -494,12 +494,12 @@
       "2026-06-19T00:00:00": {
         "Date": "2026-06-19",
         "IsAvailable": true,
-        "TotalAvailable": 78,
-        "TotalAvailableUnit": 82,
+        "TotalAvailable": 76,
+        "TotalAvailableUnit": 81,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 0,
-        "PersonCount": 0,
+        "ReservationCount": 1,
+        "PersonCount": 2,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -998,12 +998,12 @@
       "2026-07-25T00:00:00": {
         "Date": "2026-07-25",
         "IsAvailable": true,
-        "TotalAvailable": 78,
-        "TotalAvailableUnit": 82,
+        "TotalAvailable": 65,
+        "TotalAvailableUnit": 81,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 0,
-        "PersonCount": 0,
+        "ReservationCount": 1,
+        "PersonCount": 13,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
