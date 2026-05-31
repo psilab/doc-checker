@@ -564,13 +564,13 @@
       "2026-07-07T00:00:00": {
         "Date": "2026-07-07",
         "IsAvailable": true,
-        "TotalAvailable": 5,
-        "TotalAvailableUnit": 6,
+        "TotalAvailable": 4,
+        "TotalAvailableUnit": 4,
         "MaxOccupancy": 8,
         "UnitCount": 8,
         "ReservationCount": 2,
         "PersonCount": 3,
-        "LockCount": null,
+        "LockCount": 1,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
