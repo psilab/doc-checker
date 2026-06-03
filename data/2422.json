@@ -200,13 +200,13 @@
       "2026-06-14T00:00:00": {
         "Date": "2026-06-14",
         "IsAvailable": true,
-        "TotalAvailable": 60,
-        "TotalAvailableUnit": 75,
+        "TotalAvailable": 62,
+        "TotalAvailableUnit": 77,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 5,
         "PersonCount": 16,
-        "LockCount": 2,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
