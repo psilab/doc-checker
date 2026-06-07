@@ -1,7 +1,7 @@
 {
   "FacilityId": 2374,
-  "StartDate": "2026-06-06",
-  "EndDate": "2026-09-03",
+  "StartDate": "2026-06-07",
+  "EndDate": "2026-09-04",
   "Facility": {
     "FacilityId": 2374,
     "Name": "Cape Brett Hut",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-12-07 00:00:00"
     },
     "Dates": {
-      "2026-06-06T00:00:00": {
-        "Date": "2026-06-06",
-        "IsAvailable": true,
-        "TotalAvailable": 6,
-        "TotalAvailableUnit": 17,
-        "MaxOccupancy": 23,
-        "UnitCount": 23,
-        "ReservationCount": 6,
-        "PersonCount": 17,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-06-07T00:00:00": {
         "Date": "2026-06-07",
         "IsAvailable": true,
@@ -1291,6 +1277,20 @@
       },
       "2026-09-03T00:00:00": {
         "Date": "2026-09-03",
+        "IsAvailable": true,
+        "TotalAvailable": 23,
+        "TotalAvailableUnit": 23,
+        "MaxOccupancy": 23,
+        "UnitCount": 23,
+        "ReservationCount": 0,
+        "PersonCount": 0,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-09-04T00:00:00": {
+        "Date": "2026-09-04",
         "IsAvailable": true,
         "TotalAvailable": 23,
         "TotalAvailableUnit": 23,
