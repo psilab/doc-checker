@@ -35,12 +35,12 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-05-26T00:00:00+12:00",
-      "FutureBookingEnds": "2027-12-16T00:00:00+13:00",
+      "FutureBookingStarts": "2026-05-27T00:00:00+12:00",
+      "FutureBookingEnds": "2027-12-17T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-05-26 00:00:00",
-      "StrFutureBookingEndDate": "2027-12-16 00:00:00"
+      "StrFutureBookingStartDate": "2026-05-27 00:00:00",
+      "StrFutureBookingEndDate": "2027-12-17 00:00:00"
     },
     "Dates": {
       "2026-06-16T00:00:00": {
@@ -88,12 +88,12 @@
       "2026-06-19T00:00:00": {
         "Date": "2026-06-19",
         "IsAvailable": true,
-        "TotalAvailable": 58,
-        "TotalAvailableUnit": 76,
+        "TotalAvailable": 54,
+        "TotalAvailableUnit": 74,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 6,
-        "PersonCount": 20,
+        "ReservationCount": 8,
+        "PersonCount": 24,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -102,12 +102,12 @@
       "2026-06-20T00:00:00": {
         "Date": "2026-06-20",
         "IsAvailable": true,
-        "TotalAvailable": 6,
-        "TotalAvailableUnit": 54,
+        "TotalAvailable": 5,
+        "TotalAvailableUnit": 53,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 28,
-        "PersonCount": 72,
+        "ReservationCount": 29,
+        "PersonCount": 73,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -984,13 +984,13 @@
       "2026-08-22T00:00:00": {
         "Date": "2026-08-22",
         "IsAvailable": true,
-        "TotalAvailable": 3,
-        "TotalAvailableUnit": 76,
+        "TotalAvailable": 26,
+        "TotalAvailableUnit": 77,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 5,
         "PersonCount": 52,
-        "LockCount": 23,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
