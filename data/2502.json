@@ -35,12 +35,12 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-05-28T00:00:00+12:00",
-      "FutureBookingEnds": "2027-12-18T00:00:00+13:00",
+      "FutureBookingStarts": "2026-05-29T00:00:00+12:00",
+      "FutureBookingEnds": "2027-12-19T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-05-28 00:00:00",
-      "StrFutureBookingEndDate": "2027-12-18 00:00:00"
+      "StrFutureBookingStartDate": "2026-05-29 00:00:00",
+      "StrFutureBookingEndDate": "2027-12-19 00:00:00"
     },
     "Dates": {
       "2026-06-18T00:00:00": {
@@ -186,12 +186,12 @@
       "2026-06-28T00:00:00": {
         "Date": "2026-06-28",
         "IsAvailable": true,
-        "TotalAvailable": 6,
-        "TotalAvailableUnit": 7,
+        "TotalAvailable": 5,
+        "TotalAvailableUnit": 6,
         "MaxOccupancy": 8,
         "UnitCount": 8,
-        "ReservationCount": 1,
-        "PersonCount": 2,
+        "ReservationCount": 2,
+        "PersonCount": 3,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
