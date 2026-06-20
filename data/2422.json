@@ -1,7 +1,7 @@
 {
   "FacilityId": 2422,
-  "StartDate": "2026-06-19",
-  "EndDate": "2026-09-16",
+  "StartDate": "2026-06-20",
+  "EndDate": "2026-09-17",
   "Facility": {
     "FacilityId": 2422,
     "Name": "Pinnacles Hut (Kauaeranga Kauri Trail) Coromandel",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2027-12-20 00:00:00"
     },
     "Dates": {
-      "2026-06-19T00:00:00": {
-        "Date": "2026-06-19",
-        "IsAvailable": true,
-        "TotalAvailable": 39,
-        "TotalAvailableUnit": 69,
-        "MaxOccupancy": 78,
-        "UnitCount": 82,
-        "ReservationCount": 13,
-        "PersonCount": 39,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-06-20T00:00:00": {
         "Date": "2026-06-20",
         "IsAvailable": true,
@@ -200,12 +186,12 @@
       "2026-06-30T00:00:00": {
         "Date": "2026-06-30",
         "IsAvailable": true,
-        "TotalAvailable": 56,
-        "TotalAvailableUnit": 78,
+        "TotalAvailable": 49,
+        "TotalAvailableUnit": 77,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 4,
-        "PersonCount": 22,
+        "ReservationCount": 5,
+        "PersonCount": 29,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -228,12 +214,12 @@
       "2026-07-02T00:00:00": {
         "Date": "2026-07-02",
         "IsAvailable": true,
-        "TotalAvailable": 74,
-        "TotalAvailableUnit": 81,
+        "TotalAvailable": 72,
+        "TotalAvailableUnit": 80,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 1,
-        "PersonCount": 4,
+        "ReservationCount": 2,
+        "PersonCount": 6,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1291,6 +1277,20 @@
       },
       "2026-09-16T00:00:00": {
         "Date": "2026-09-16",
+        "IsAvailable": true,
+        "TotalAvailable": 78,
+        "TotalAvailableUnit": 82,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 0,
+        "PersonCount": 0,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-09-17T00:00:00": {
+        "Date": "2026-09-17",
         "IsAvailable": true,
         "TotalAvailable": 78,
         "TotalAvailableUnit": 82,
