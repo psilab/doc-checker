@@ -283,14 +283,14 @@
       },
       "2026-07-10T00:00:00": {
         "Date": "2026-07-10",
-        "IsAvailable": true,
-        "TotalAvailable": 1,
-        "TotalAvailableUnit": 14,
+        "IsAvailable": false,
+        "TotalAvailable": 0,
+        "TotalAvailableUnit": 13,
         "MaxOccupancy": 23,
         "UnitCount": 23,
         "ReservationCount": 9,
         "PersonCount": 22,
-        "LockCount": null,
+        "LockCount": 1,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
