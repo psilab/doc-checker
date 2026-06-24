@@ -452,13 +452,13 @@
       "2026-07-23T00:00:00": {
         "Date": "2026-07-23",
         "IsAvailable": true,
-        "TotalAvailable": 75,
-        "TotalAvailableUnit": 81,
+        "TotalAvailable": 67,
+        "TotalAvailableUnit": 80,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 1,
         "PersonCount": 3,
-        "LockCount": null,
+        "LockCount": 8,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
