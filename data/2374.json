@@ -88,13 +88,13 @@
       "2026-07-06T00:00:00": {
         "Date": "2026-07-06",
         "IsAvailable": true,
-        "TotalAvailable": 23,
-        "TotalAvailableUnit": 23,
+        "TotalAvailable": 22,
+        "TotalAvailableUnit": 22,
         "MaxOccupancy": 23,
         "UnitCount": 23,
         "ReservationCount": 0,
         "PersonCount": 0,
-        "LockCount": null,
+        "LockCount": 1,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
