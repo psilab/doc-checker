@@ -1,7 +1,7 @@
 {
   "FacilityId": 2502,
-  "StartDate": "2026-07-14",
-  "EndDate": "2026-10-11",
+  "StartDate": "2026-07-15",
+  "EndDate": "2026-10-12",
   "Facility": {
     "FacilityId": 2502,
     "Name": "Peach Cove Hut",
@@ -35,28 +35,14 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-06-23T00:00:00+12:00",
-      "FutureBookingEnds": "2028-01-14T00:00:00+13:00",
+      "FutureBookingStarts": "2026-06-24T00:00:00+12:00",
+      "FutureBookingEnds": "2028-01-15T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-06-23 00:00:00",
-      "StrFutureBookingEndDate": "2028-01-14 00:00:00"
+      "StrFutureBookingStartDate": "2026-06-24 00:00:00",
+      "StrFutureBookingEndDate": "2028-01-15 00:00:00"
     },
     "Dates": {
-      "2026-07-14T00:00:00": {
-        "Date": "2026-07-14",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 7,
-        "MaxOccupancy": 8,
-        "UnitCount": 8,
-        "ReservationCount": 1,
-        "PersonCount": 8,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-07-15T00:00:00": {
         "Date": "2026-07-15",
         "IsAvailable": false,
@@ -101,13 +87,13 @@
       },
       "2026-07-18T00:00:00": {
         "Date": "2026-07-18",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
+        "IsAvailable": true,
+        "TotalAvailable": 1,
         "TotalAvailableUnit": 7,
         "MaxOccupancy": 8,
         "UnitCount": 8,
         "ReservationCount": 1,
-        "PersonCount": 8,
+        "PersonCount": 7,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -578,12 +564,12 @@
       "2026-08-21T00:00:00": {
         "Date": "2026-08-21",
         "IsAvailable": true,
-        "TotalAvailable": 8,
-        "TotalAvailableUnit": 8,
+        "TotalAvailable": 3,
+        "TotalAvailableUnit": 7,
         "MaxOccupancy": 8,
         "UnitCount": 8,
-        "ReservationCount": 0,
-        "PersonCount": 0,
+        "ReservationCount": 1,
+        "PersonCount": 5,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1291,6 +1277,20 @@
       },
       "2026-10-11T00:00:00": {
         "Date": "2026-10-11",
+        "IsAvailable": true,
+        "TotalAvailable": 8,
+        "TotalAvailableUnit": 8,
+        "MaxOccupancy": 8,
+        "UnitCount": 8,
+        "ReservationCount": 0,
+        "PersonCount": 0,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2026-10-12T00:00:00": {
+        "Date": "2026-10-12",
         "IsAvailable": true,
         "TotalAvailable": 8,
         "TotalAvailableUnit": 8,
