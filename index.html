@@ -70,6 +70,11 @@
             display: none !important;
         }
 
+        .flatpickr-day{
+            cursor: default;
+            pointer-events: none;
+        }
+
         .available{
             background:#4CAF50 !important;
             color:white !important;
@@ -195,7 +200,6 @@
 
                     inline: true,
                     locale: { firstDayOfWeek: 1 },
-                    defaultDate: new Date(currentYear, currentMonth, 1),
 
                     onDayCreate: function(dObj, dStr, fp, dayElem){
 
@@ -220,6 +224,7 @@
 
                 });
 
+                fp.jumpToDate(new Date(currentYear, currentMonth, 1));
                 instances.push(fp);
 
             });
