@@ -6,7 +6,7 @@ Tracks bed availability for NZ huts and sends Telegram notifications when watche
 
 ## How it works
 
-- GitHub Actions runs every hour, fetches availability data from the NZ recreation booking API and saves to `data/{id}.json`
+- GitHub Actions runs once a day, fetches availability data from the NZ recreation booking API and saves to `data/{id}.json`
 - A static page (`index.html`) displays color-coded calendars for all huts
 - `notify.js` compares old vs new data and sends a Telegram message if a watched date goes from full → available (with more than 1 space)
 
