@@ -3,6 +3,10 @@
   "maxCapacity": 290,
   "days": [
     {
+      "date": "2026-09-02",
+      "capacity": 89
+    },
+    {
       "date": "2026-09-03",
       "capacity": 91
     },
@@ -652,7 +656,7 @@
     },
     {
       "date": "2027-02-12",
-      "capacity": 3
+      "capacity": 1
     },
     {
       "date": "2027-02-13",
