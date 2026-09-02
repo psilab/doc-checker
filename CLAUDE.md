@@ -12,6 +12,7 @@ Static site + GitHub Actions pipeline that checks NZ hut availability and sends 
 - **`config.json` is source of truth** — hut list, IDs, names, and watched dates all live here. Both frontend and notify script read from it.
 - **`API_BASE_URL` ends without facility ID** — e.g. `.../occupancygrid`. The facility ID is appended in `fetch.js` per hut.
 - **Timezone fix** — calendar uses `localDate()` helper instead of `toISOString()` to avoid UTC date shift (user is in NZ, UTC+13).
+- **Commit and push freely** — user has given standing approval to commit and push in this repo, directly on `main`, without asking each time.
 
 ## Notification logic
 
