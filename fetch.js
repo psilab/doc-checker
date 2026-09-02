@@ -10,7 +10,7 @@ const today = new Date().toISOString().slice(0, 10);
 fs.mkdirSync("data", { recursive: true });
 
 async function fetchHut(hut) {
-    const url = `${base}/${hut.id}/startdate/${today}/nights/90/1`;
+    const url = `${base}/${hut.id}/startdate/${today}/nights/120/1`;
 
     const res = await fetch(url, {
         headers: {
