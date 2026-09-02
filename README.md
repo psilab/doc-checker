@@ -2,6 +2,8 @@
 
 Tracks bed availability for NZ huts and sends Telegram notifications when watched dates open up.
 
+**Live site:** https://psilab.github.io/doc-checker/
+
 ## How it works
 
 - GitHub Actions runs every hour, fetches availability data from the NZ recreation booking API and saves to `data/{id}.json`
