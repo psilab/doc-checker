@@ -161,6 +161,11 @@
     const MONTHS = ["January","February","March","April","May","June",
                     "July","August","September","October","November","December"];
 
+    // Auckland Council's own calendar renders these types as two-state, because they are
+    // booked whole: their capacity is either zero or the entire place, never a partial
+    // count the way a campground or a hut reports one.
+    const WHOLE_UNIT_TYPES = ["Bach", "Tiny home", "Lodge", "Glamping", "Tent"];
+
     let currentYear = new Date().getFullYear();
     let currentMonth = new Date().getMonth();
 
@@ -194,19 +199,51 @@
             String(d.getDate()).padStart(2, "0");
     }
 
+    // DOC ids and Auckland Council ids are separate number spaces, so AKL files carry a
+    // prefix to keep them from ever colliding. Same helper lives in fetch.js and notify.js.
+    function dataKey(hut) {
+        return hut.source === "akl" ? `akl-${hut.id}` : String(hut.id);
+    }
+
+    // The two sources store different shapes, so flatten both to { date, free, max } per
+    // night and let everything downstream stay source-agnostic. Also lives in notify.js.
+    function daysOf(hut, json) {
+        if (hut.source === "akl") {
+            // Overbooked or closed days come back as a negative capacity. Nothing
+            // downstream wants to reason about that, so it is just as unavailable as zero.
+            return (json?.days ?? []).map(d => ({
+                date: d.date,
+                free: Math.max(0, d.capacity),
+                max: json.maxCapacity
+            }));
+        }
+
+        return Object.values(json?.Facility?.Dates ?? {}).map(d => ({
+            date: d.Date,
+            free: d.IsAvailable ? d.TotalAvailable : 0,
+            max: d.MaxOccupancy
+        }));
+    }
+
+    // A DOC hut or a campground with one bed left is no use to a party, so it reads as full.
+    // For a whole-unit type any free space means the entire place is free.
+    function minFree(hut) {
+        return hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2;
+    }
+
     function loadHut(hut, container) {
-        fetch(`./data/${hut.id}.json?t=` + Date.now())
+        fetch(`./data/${dataKey(hut)}.json?t=` + Date.now())
             .then(r => r.json())
             .then(data => {
 
-                if (!data?.Facility?.Dates) return;
+                const days = daysOf(hut, data);
+                if (!days.length) return;
 
-                const dates = data.Facility.Dates;
+                const threshold = minFree(hut);
                 const dateMap = {};
 
-                for (const key in dates){
-                    const d = dates[key];
-                    dateMap[d.Date] = d;
+                for (const d of days){
+                    dateMap[d.date] = d;
                 }
 
                 const cal = document.createElement("div");
@@ -223,11 +260,11 @@
                         const d = dateMap[date];
 
                         if (d) {
-                            dayElem.dataset.info = date + "\n" + d.TotalAvailable + " of " + d.MaxOccupancy + " places free";
+                            dayElem.dataset.info = date + "\n" + d.free + " of " + d.max + " places free";
 
-                            if (!d.IsAvailable || d.TotalAvailable <= 1){
+                            if (d.free < threshold){
                                 dayElem.classList.add("full");
-                            } else if (d.TotalAvailable < d.MaxOccupancy * LOW_RATIO){
+                            } else if (d.free < d.max * LOW_RATIO){
                                 dayElem.classList.add("low");
                             } else {
                                 dayElem.classList.add("available");

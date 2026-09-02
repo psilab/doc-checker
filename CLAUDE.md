@@ -2,21 +2,22 @@
 
 ## Project overview
 
-Static site + GitHub Actions pipeline that checks NZ hut availability and sends Telegram notifications. Deployed to GitHub Pages.
+Static site + GitHub Actions pipeline that checks NZ hut and campground availability and sends Telegram notifications. Deployed to GitHub Pages.
 
 ## Key decisions
 
 - **No Node locally** — user has no local Node.js. Never suggest running scripts locally. All execution happens in GitHub Actions.
 - **No dependencies** — no package.json, no npm. Uses Node built-ins and native `fetch` (Node 24).
-- **`data/` is committed** — `data/{id}.json` files are committed to the repo so GitHub Pages can serve them. `data.old/` is gitignored (temp, workflow-only).
-- **`config.json` is source of truth** — hut list, IDs, names, and watched dates all live here. Both frontend and notify script read from it.
-- **`API_BASE_URL` ends without facility ID** — e.g. `.../occupancygrid`. The facility ID is appended in `fetch.js` per hut.
+- **`data/` is committed** — `data/{key}.json` files are committed to the repo so GitHub Pages can serve them. `data.old/` is gitignored (temp, workflow-only).
+- **`config.json` is source of truth** — every entry carries a `source` (`"doc"` or `"akl"`), its ids, name and watched dates. Both frontend and notify script read from it.
+- **Two sources, one internal shape** — `daysOf()` flattens both APIs to `{ date, free }` per night. It is duplicated in `notify.js` and `index.html` (no build step, no module sharing), as are `dataKey()` and `minFree()`. Keep the copies in step.
+- **`API_BASE_URL` ends without facility ID** — e.g. `.../occupancygrid`. The facility ID is appended in `fetch.js` per hut. Auckland Council's hosts are hardcoded instead: they are public and already documented in the repo.
 - **Timezone fix** — calendar uses `localDate()` helper instead of `toISOString()` to avoid UTC date shift (user is in NZ, UTC+13).
 - **Commit and push freely** — user has given standing approval to commit and push in this repo, directly on `main`, without asking each time.
 
 ## Notification logic
 
-Telegram notification fires only when a watched date transitions from `IsAvailable: false` → `true` AND `TotalAvailable > 1`.
+A Telegram notification fires when a watched date goes from 0 free spaces to at least `minFree()`, which is 2 for DOC huts and Auckland Council campgrounds and 1 for whole-unit types (`Bach`, `Tiny home`, `Lodge`, `Glamping`, `Tent`), where any free space means the whole place came free.
 
 ## GitHub Actions secrets/vars
 
