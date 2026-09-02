@@ -72,7 +72,6 @@
 
         .flatpickr-day{
             cursor: default;
-            pointer-events: none;
         }
 
         .available{
@@ -93,6 +92,20 @@
         .watched{
             outline: 4px solid #1565C0 !important;
             outline-offset: -4px;
+        }
+
+        #tip{
+            position: absolute;
+            display: none;
+            background: #333;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre;
+            pointer-events: none;
+            z-index: 100;
         }
 
         .legend{
@@ -207,6 +220,8 @@
                         const d = dateMap[date];
 
                         if (d) {
+                            dayElem.dataset.info = date + "\n" + d.TotalAvailable + " of " + d.MaxOccupancy + " places free";
+
                             if (!d.IsAvailable || d.TotalAvailable <= 1){
                                 dayElem.classList.add("full");
                             } else if (d.TotalAvailable < 10){
@@ -224,11 +239,29 @@
 
                 });
 
+                fp.calendarContainer.addEventListener("click", e => e.stopPropagation(), true);
                 fp.jumpToDate(new Date(currentYear, currentMonth, 1));
                 instances.push(fp);
 
             });
     }
+
+    const tip = document.createElement("div");
+    tip.id = "tip";
+    document.body.appendChild(tip);
+
+    document.addEventListener("mouseover", e => {
+        const day = e.target.closest(".flatpickr-day");
+        if (!day || !day.dataset.info) {
+            tip.style.display = "none";
+            return;
+        }
+        tip.textContent = day.dataset.info;
+        tip.style.display = "block";
+        const r = day.getBoundingClientRect();
+        tip.style.left = (window.scrollX + r.left + r.width / 2 - tip.offsetWidth / 2) + "px";
+        tip.style.top = (window.scrollY + r.bottom + 8) + "px";
+    });
 
     updateLabel();
 
