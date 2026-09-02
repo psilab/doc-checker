@@ -76,14 +76,16 @@ something that was already free when watching started never notifies.
 ```
 
 `watchStays` — a run of consecutive nights anywhere inside a range, for "any three nights
-together in January", which is not a list of dates:
+together over the summer holidays", which is not a list of dates:
 ```json
-"watchStays": [{ "nights": 3, "from": "2027-01-01", "to": "2027-01-31" }]
+"watchStays": [{ "nights": 3, "from": "2026-12-18", "to": "2027-01-31" }]
 ```
 
 Every night of the stay has to be free at once, and the whole run has to fit inside
-`from`..`to` — a stay running 30 January to 1 February does not count as January. Overlapping
-runs are reported as one stretch rather than one message per possible start date.
+`from`..`to`, both ends inclusive — a stay running 30 January to 1 February falls outside the
+range above. That is why one range covering both months beats one per month: separate
+December and January entries would miss a stay over New Year. Overlapping runs are reported
+as one stretch rather than one message per possible start date.
 
 ## Calendar colors
 

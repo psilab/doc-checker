@@ -235,8 +235,12 @@ Two details that are easy to get wrong:
   starts; reporting each would send three lines about one opening, so contiguous starts are
   collapsed and the covered span is reported instead.
 
-A stay has to fit wholly inside `from`..`to`, so 30 January to 1 February is not "in January".
-Widen the range if a stay straddling a month boundary should count.
+A stay has to fit wholly inside `from`..`to` (both ends inclusive), so two ranges meeting at a
+month boundary silently drop any stay that straddles it. Tāwharanui campground therefore
+watches one range, 2026-12-18 to 2027-01-31, rather than one for December and one for
+January — otherwise a New Year stay of 30 December to 1 January would match neither.
 
-As of 2026-09-03 January 2027 has no run of even two free nights — 19 of its 31 nights are at
-zero and the rest are 1, 3, 15 or 76 — so the rule is watching a genuinely full month.
+That start date is where the campground books out: 17 December still has 66 places, 18
+December has none, and the block runs unbroken to the end of January. As of 2026-09-03 those
+45 nights hold no run of even two free nights — the only gaps are single days (24 December,
+then 24, 28 and 31 January) — so the rule is watching a genuinely solid stretch.

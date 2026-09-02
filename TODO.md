@@ -18,8 +18,8 @@ There is no cheap way to enumerate the full ~120-property list: the find-accommo
 renders its results client-side from Coveo, so the ids are not in any served HTML. Resolving
 a new one means loading its property page, which is 5.5 MB (560 KB on the wire).
 
-## 2. Christmas at the campground
+## 2. Nothing else outstanding
 
-January 2027 is now watched via `watchStays` (any three nights together). Christmas week is
-just as solidly booked and is not watched by anything — worth deciding whether it wants a
-second `watchStays` entry over late December.
+Tāwharanui campground watches 18 December to 31 January for any three nights together, which
+covers the whole booked-out summer block. Nothing is watched on the DOC side beyond Peach
+Cove's October dates.
