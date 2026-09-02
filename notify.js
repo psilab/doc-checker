@@ -33,6 +33,11 @@ async function checkHut(hut) {
     const oldDates = oldJson.Facility.Dates;
     const newDates = newJson.Facility.Dates;
 
+    const missing = hut.watchDates.filter(date => !Object.values(newDates).some(d => d.Date === date));
+    if (missing.length) {
+        console.warn(`[${hut.name}] Watched dates missing from fetched data: ${missing.join(", ")}`);
+    }
+
     const freed = hut.watchDates.filter(date => {
         const oldEntry = Object.values(oldDates).find(d => d.Date === date);
         const newEntry = Object.values(newDates).find(d => d.Date === date);

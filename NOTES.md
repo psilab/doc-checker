@@ -86,3 +86,39 @@ Created 2026-09-03: Peach Cove Hut, 1-31 Oct 2026, any unit, email contact. The 
 this repo is the control group — if an email ever beats the Telegram bot to a cancellation,
 the feature works. The row carries `EndDate: 2026-10-31` so it should expire on its own
 (inferred from the payload, not confirmed).
+
+## Tyler RDR endpoints — evaluated 2026-09-03
+
+Conclusion: the call we already make is the right one. Everything else is worse or redundant.
+
+`API_BASE_URL` is `https://prod-nz-rdr.recreation-management.tylerapp.com/nzrdr/rdr/search/occupancygrid`.
+It answers plain curl with the spoofed UA + `Referer`/`Origin` that `fetch.js` already sends —
+no WAF challenge observed, despite the warning in the greatwalk-bot notes.
+
+| Endpoint | Result |
+|---|---|
+| `GET search/occupancygrid/{id}/startdate/{d}/nights/{n}/1` (current) | 12 fields per day: `TotalAvailable` (people), `TotalAvailableUnit` (bunks), `MaxOccupancy`, `UnitCount`, `ReservationCount`, `PersonCount`, `LockCount`, `InSeason`, `IsBlocked`, `IsWalkin`. We consume 4. |
+| `POST search/grid` | 200. Per-unit metadata (8 named bunks, `IsAda`), but `Slices` came back empty for a guessed body. Even working it would need re-aggregating to produce numbers occupancygrid hands over directly. Not an upgrade. |
+| `GET search/next/{id}/startdate/{d}/nights/{n}` | 200 — `AvailableUnits` and `CountsByUnitId`, but for **one** date range only. Covering our window would take ~1 call per day. Only answers "next free date", which is derivable from data we already hold. |
+| `GET search/bookingwindow` | 200 — global `ServerStamp` / `FutureBookingStarts` / `FutureBookingEnds`. Redundant: occupancygrid already returns per-facility `Restrictions.FutureBooking*`. |
+| `GET search/details/{id}/startdate/{d}/nights/{n}/{customerId}/{classId}` | 500 with the documented parameter shape. |
+
+### The horizon was the real problem
+
+occupancygrid returns as many nights as asked (tested 120 / 180 / 200 / 365). The current
+booking season runs to 2027-06-30 — `InSeason` is true for 301 days from 2026-09-03 — and
+real reservations already exist well past the old fixed 120-night window, which stopped at
+2026-12-31.
+
+`notify.js` matches watched dates with `.find(d => d.Date === date)`, so **any watched date
+beyond the fetched window simply never matched** — no error, no notification, ever. A date
+added for, say, March 2027 would have looked configured and done nothing.
+
+Fixed 2026-09-03: `fetch.js` derives nights per hut from its furthest watched date (floor
+120, cap 365, warns past the cap), so only huts that need a longer window pay for it —
+120 nights is ~30 KB per hut, 365 nights ~89 KB, and `data/` is committed on every change.
+`notify.js` now warns when a watched date is missing from the data.
+
+Side note: `fetch.js` builds `today` from `toISOString()` (UTC), so in NZ the window starts a
+day early. Harmless and self-consistent — the same `today` feeds both the request and the
+night count — but inconsistent with the `localDate()` timezone fix used in the calendar.

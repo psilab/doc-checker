@@ -7,10 +7,30 @@ if (!base) throw new Error("API_BASE_URL is not set");
 
 const today = new Date().toISOString().slice(0, 10);
 
+// The API returns as many nights as asked for, but every night costs payload that gets
+// committed to the repo. Fetch the usual window, and stretch it only for huts whose
+// watched dates sit beyond it - otherwise notify.js silently never sees those dates.
+const NIGHTS_MIN = 120;
+const NIGHTS_MAX = 365;
+
+function nightsFor(hut) {
+    if (!hut.watchDates.length) return NIGHTS_MIN;
+
+    const furthest = hut.watchDates.reduce((a, b) => (a > b ? a : b));
+    const days = Math.round((Date.parse(furthest) - Date.parse(today)) / 86400000) + 1;
+
+    if (days > NIGHTS_MAX) {
+        console.warn(`[${hut.name}] Watched date ${furthest} is beyond ${NIGHTS_MAX} nights and will not be tracked`);
+    }
+
+    return Math.min(NIGHTS_MAX, Math.max(NIGHTS_MIN, days));
+}
+
 fs.mkdirSync("data", { recursive: true });
 
 async function fetchHut(hut) {
-    const url = `${base}/${hut.id}/startdate/${today}/nights/120/1`;
+    const nights = nightsFor(hut);
+    const url = `${base}/${hut.id}/startdate/${today}/nights/${nights}/1`;
 
     const res = await fetch(url, {
         headers: {
@@ -40,7 +60,7 @@ async function fetchHut(hut) {
     delete data.Message;
 
     fs.writeFileSync(`data/${hut.id}.json`, JSON.stringify(data, null, 2) + "\n");
-    console.log(`[${hut.name}] data/${hut.id}.json updated`);
+    console.log(`[${hut.name}] data/${hut.id}.json updated (${nights} nights)`);
 }
 
 async function run() {
