@@ -30,7 +30,10 @@
       "productId": 220233,
       "type": "Camping",
       "name": "Tāwharanui campground",
-      "watchDates": []
+      "watchDates": [],
+      "watchStays": [
+        { "nights": 3, "from": "2027-01-01", "to": "2027-01-31" }
+      ]
     }
   ]
 }

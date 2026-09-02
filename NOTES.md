@@ -218,3 +218,25 @@ host itself is not behind the filter and needs only `Origin`/`Referer`.
 There is no cheap listing. `find-accommodation.html` renders its results client-side from
 Coveo, so no served HTML contains the ids. A property's `productId` has to be read out of
 its own page, next to `accommodationAsCF`.
+
+### Watching a run of nights rather than a date
+
+"Any three nights together in January" cannot be written as a list of dates, so `watchStays`
+(`{ nights, from, to }`) sits alongside `watchDates`. The comparison is per **start date**: a
+start counts as opened when the same span was not bookable in `data.old/` and is bookable in
+`data/`.
+
+Two details that are easy to get wrong:
+
+- **Both runs must cover the span.** Checking only the new file makes a fetch window that has
+  just grown look like a mass cancellation — every stretch it can suddenly see reports as
+  newly free. Nights absent from either file are unknowable, not free.
+- **Overlapping starts are one stretch.** Five free nights satisfy three different 3-night
+  starts; reporting each would send three lines about one opening, so contiguous starts are
+  collapsed and the covered span is reported instead.
+
+A stay has to fit wholly inside `from`..`to`, so 30 January to 1 February is not "in January".
+Widen the range if a stay straddling a month boundary should count.
+
+As of 2026-09-03 January 2027 has no run of even two free nights — 19 of its 31 nights are at
+zero and the rest are 1, 3, 15 or 76 — so the rule is watching a genuinely full month.

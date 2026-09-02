@@ -231,6 +231,13 @@
         return hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2;
     }
 
+    // A watchStays range is watched just as much as a single watchDate is, so it gets the
+    // same outline - otherwise a rule in config.json would show nowhere on the calendar.
+    function isWatched(hut, date) {
+        return (hut.watchDates ?? []).includes(date)
+            || (hut.watchStays ?? []).some(s => date >= s.from && date <= s.to);
+    }
+
     function loadHut(hut, container) {
         fetch(`./data/${dataKey(hut)}.json?t=` + Date.now())
             .then(r => r.json())
@@ -271,7 +278,7 @@
                             }
                         }
 
-                        if (hut.watchDates.includes(date)){
+                        if (isWatched(hut, date)){
                             dayElem.classList.add("watched");
                         }
 

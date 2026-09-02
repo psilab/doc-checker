@@ -17,7 +17,10 @@ Static site + GitHub Actions pipeline that checks NZ hut and campground availabi
 
 ## Notification logic
 
-A Telegram notification fires when a watched date goes from 0 free spaces to at least `minFree()`, which is 2 for DOC huts and Auckland Council campgrounds and 1 for whole-unit types (`Bach`, `Tiny home`, `Lodge`, `Glamping`, `Tent`), where any free space means the whole place came free.
+Two rules, both firing only on a transition between runs, and both using `minFree()` as the bar for "free": 2 for DOC huts and Auckland Council campgrounds, 1 for whole-unit types (`Bach`, `Tiny home`, `Lodge`, `Glamping`, `Tent`) where any free space means the whole place came free.
+
+- `watchDates` — a listed night goes from 0 free spaces to at least `minFree()`.
+- `watchStays` — `{ nights, from, to }`. A run of `nights` consecutive free nights, wholly inside `from`..`to`, that was not bookable last run and is now. Both runs must cover the whole span, so a window that has just grown reports nothing: those nights came into view, they did not open up.
 
 ## GitHub Actions secrets/vars
 

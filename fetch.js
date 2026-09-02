@@ -19,10 +19,17 @@ function dataKey(hut) {
     return hut.source === "akl" ? `akl-${hut.id}` : String(hut.id);
 }
 
-function nightsFor(hut) {
-    if (!hut.watchDates.length) return NIGHTS_MIN;
+// The window has to reach whatever is being watched, whether that is a single night or the
+// far end of a range that a run of consecutive nights is hunted in.
+function furthestWatched(hut) {
+    const dates = [...(hut.watchDates ?? []), ...(hut.watchStays ?? []).map(s => s.to)];
+    return dates.length ? dates.reduce((a, b) => (a > b ? a : b)) : null;
+}
 
-    const furthest = hut.watchDates.reduce((a, b) => (a > b ? a : b));
+function nightsFor(hut) {
+    const furthest = furthestWatched(hut);
+    if (!furthest) return NIGHTS_MIN;
+
     const days = Math.round((Date.parse(furthest) - Date.parse(today)) / 86400000) + 1;
 
     if (days > NIGHTS_MAX) {
@@ -127,9 +134,9 @@ function localDate(d) {
 }
 
 function aklMonthsFor(hut) {
-    if (!hut.watchDates.length) return AKL_MONTHS_MIN;
+    const furthest = furthestWatched(hut);
+    if (!furthest) return AKL_MONTHS_MIN;
 
-    const furthest = hut.watchDates.reduce((a, b) => (a > b ? a : b));
     const [year, month] = furthest.split("-").map(Number);
     const now = new Date();
     const span = (year - now.getFullYear()) * 12 + (month - 1 - now.getMonth()) + 1;

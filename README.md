@@ -65,6 +65,26 @@ An Auckland Council property, where `id` is the number in its accommodation-deta
 `Glamping` and `Tent` are booked whole, so any free space means the entire place came free.
 Everything else is per-person, where a single leftover bed is no use to a party.
 
+## Watching for openings
+
+Two rules, and an entry can carry both. Either way a message is only sent on a *change*, so
+something that was already free when watching started never notifies.
+
+`watchDates` — specific nights, each watched on its own:
+```json
+"watchDates": ["2026-10-03", "2026-10-10"]
+```
+
+`watchStays` — a run of consecutive nights anywhere inside a range, for "any three nights
+together in January", which is not a list of dates:
+```json
+"watchStays": [{ "nights": 3, "from": "2027-01-01", "to": "2027-01-31" }]
+```
+
+Every night of the stay has to be free at once, and the whole run has to fit inside
+`from`..`to` — a stay running 30 January to 1 February does not count as January. Overlapping
+runs are reported as one stretch rather than one message per possible start date.
+
 ## Calendar colors
 
 - Green — plenty of space
