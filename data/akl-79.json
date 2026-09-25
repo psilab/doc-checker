@@ -3,108 +3,68 @@
   "maxCapacity": 290,
   "days": [
     {
-      "date": "2026-09-15",
-      "capacity": 88
-    },
-    {
-      "date": "2026-09-16",
-      "capacity": 97
-    },
-    {
-      "date": "2026-09-17",
-      "capacity": 93
-    },
-    {
-      "date": "2026-09-18",
-      "capacity": 93
-    },
-    {
-      "date": "2026-09-19",
-      "capacity": 93
-    },
-    {
-      "date": "2026-09-20",
-      "capacity": 99
-    },
-    {
-      "date": "2026-09-21",
-      "capacity": 99
-    },
-    {
-      "date": "2026-09-22",
-      "capacity": 97
-    },
-    {
-      "date": "2026-09-23",
-      "capacity": 51
-    },
-    {
-      "date": "2026-09-24",
-      "capacity": 243
-    },
-    {
       "date": "2026-09-25",
-      "capacity": 278
+      "capacity": 214
     },
     {
       "date": "2026-09-26",
-      "capacity": 266
+      "capacity": 230
     },
     {
       "date": "2026-09-27",
-      "capacity": 284
+      "capacity": 271
     },
     {
       "date": "2026-09-28",
-      "capacity": 275
+      "capacity": 259
     },
     {
       "date": "2026-09-29",
-      "capacity": 282
+      "capacity": 275
     },
     {
       "date": "2026-09-30",
-      "capacity": 283
+      "capacity": 276
     },
     {
       "date": "2026-10-01",
-      "capacity": 222
+      "capacity": 217
     },
     {
       "date": "2026-10-02",
-      "capacity": 181
+      "capacity": 164
     },
     {
       "date": "2026-10-03",
-      "capacity": 225
+      "capacity": 202
     },
     {
       "date": "2026-10-04",
-      "capacity": 273
+      "capacity": 266
     },
     {
       "date": "2026-10-05",
-      "capacity": 286
+      "capacity": 274
     },
     {
       "date": "2026-10-06",
-      "capacity": 288
+      "capacity": 275
     },
     {
       "date": "2026-10-07",
-      "capacity": 280
+      "capacity": 271
     },
     {
       "date": "2026-10-08",
-      "capacity": 246
+      "capacity": 233
     },
     {
       "date": "2026-10-09",
-      "capacity": 235
+      "capacity": 218
     },
     {
       "date": "2026-10-10",
-      "capacity": 232
+      "capacity": 214
     },
     {
       "date": "2026-10-11",
@@ -128,11 +88,11 @@
     },
     {
       "date": "2026-10-16",
-      "capacity": 266
+      "capacity": 261
     },
     {
       "date": "2026-10-17",
-      "capacity": 270
+      "capacity": 265
     },
     {
       "date": "2026-10-18",
@@ -144,27 +104,27 @@
     },
     {
       "date": "2026-10-20",
-      "capacity": 261
+      "capacity": 265
     },
     {
       "date": "2026-10-21",
-      "capacity": 261
+      "capacity": 241
     },
     {
       "date": "2026-10-22",
-      "capacity": 221
+      "capacity": 225
     },
     {
       "date": "2026-10-23",
-      "capacity": 4
+      "capacity": 0
     },
     {
       "date": "2026-10-24",
-      "capacity": 1
+      "capacity": 0
     },
     {
       "date": "2026-10-25",
-      "capacity": 3
+      "capacity": 0
     },
     {
       "date": "2026-10-26",
@@ -176,19 +136,19 @@
     },
     {
       "date": "2026-10-28",
-      "capacity": 272
+      "capacity": 270
     },
     {
       "date": "2026-10-29",
-      "capacity": 273
+      "capacity": 271
     },
     {
       "date": "2026-10-30",
-      "capacity": 251
+      "capacity": 224
     },
     {
       "date": "2026-10-31",
-      "capacity": 219
+      "capacity": 195
     },
     {
       "date": "2026-11-01",
@@ -212,11 +172,11 @@
     },
     {
       "date": "2026-11-06",
-      "capacity": 216
+      "capacity": 195
     },
     {
       "date": "2026-11-07",
-      "capacity": 190
+      "capacity": 160
     },
     {
       "date": "2026-11-08",
@@ -228,7 +188,7 @@
     },
     {
       "date": "2026-11-10",
-      "capacity": 285
+      "capacity": 287
     },
     {
       "date": "2026-11-11",
@@ -236,19 +196,19 @@
     },
     {
       "date": "2026-11-12",
-      "capacity": 266
+      "capacity": 261
     },
     {
       "date": "2026-11-13",
-      "capacity": 162
+      "capacity": 134
     },
     {
       "date": "2026-11-14",
-      "capacity": 160
+      "capacity": 132
     },
     {
       "date": "2026-11-15",
-      "capacity": 288
+      "capacity": 283
     },
     {
       "date": "2026-11-16",
@@ -260,35 +220,35 @@
     },
     {
       "date": "2026-11-18",
-      "capacity": 239
+      "capacity": 207
     },
     {
       "date": "2026-11-19",
-      "capacity": 212
+      "capacity": 171
     },
     {
       "date": "2026-11-20",
-      "capacity": 79
+      "capacity": 62
     },
     {
       "date": "2026-11-21",
-      "capacity": 36
+      "capacity": 0
     },
     {
       "date": "2026-11-22",
-      "capacity": 268
+      "capacity": 256
     },
     {
       "date": "2026-11-23",
-      "capacity": 210
+      "capacity": 198
     },
     {
       "date": "2026-11-24",
-      "capacity": 214
+      "capacity": 189
     },
     {
       "date": "2026-11-25",
-      "capacity": 193
+      "capacity": 189
     },
     {
       "date": "2026-11-26",
@@ -296,11 +256,11 @@
     },
     {
       "date": "2026-11-27",
-      "capacity": 0
+      "capacity": 8
     },
     {
       "date": "2026-11-28",
-      "capacity": 0
+      "capacity": 4
     },
     {
       "date": "2026-11-29",
@@ -324,7 +284,7 @@
     },
     {
       "date": "2026-12-04",
-      "capacity": 19
+      "capacity": 17
     },
     {
       "date": "2026-12-05",
@@ -336,15 +296,15 @@
     },
     {
       "date": "2026-12-07",
-      "capacity": 174
+      "capacity": 161
     },
     {
       "date": "2026-12-08",
-      "capacity": 165
+      "capacity": 152
     },
     {
       "date": "2026-12-09",
-      "capacity": 239
+      "capacity": 227
     },
     {
       "date": "2026-12-10",
@@ -356,75 +316,75 @@
     },
     {
       "date": "2026-12-12",
-      "capacity": 1
+      "capacity": 0
     },
     {
       "date": "2026-12-13",
-      "capacity": 95
+      "capacity": 91
     },
     {
       "date": "2026-12-14",
-      "capacity": 131
+      "capacity": 126
     },
     {
       "date": "2026-12-15",
-      "capacity": 134
+      "capacity": 125
     },
     {
       "date": "2026-12-16",
-      "capacity": 119
+      "capacity": 110
     },
     {
       "date": "2026-12-17",
-      "capacity": 53
+      "capacity": 44
     },
     {
       "date": "2026-12-18",
-      "capacity": 0
+      "capacity": -4
     },
     {
       "date": "2026-12-19",
-      "capacity": 0
+      "capacity": -4
     },
     {
       "date": "2026-12-20",
-      "capacity": 0
+      "capacity": 2
     },
     {
       "date": "2026-12-21",
-      "capacity": 0
+      "capacity": 2
     },
     {
       "date": "2026-12-22",
-      "capacity": 0
+      "capacity": 6
     },
     {
       "date": "2026-12-23",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-24",
-      "capacity": 13
+      "capacity": 10
     },
     {
       "date": "2026-12-25",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-26",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-27",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-28",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-29",
-      "capacity": 7
+      "capacity": 0
     },
     {
       "date": "2026-12-30",
@@ -544,7 +504,7 @@
     },
     {
       "date": "2027-01-28",
-      "capacity": 3
+      "capacity": 1
     },
     {
       "date": "2027-01-29",
@@ -556,19 +516,19 @@
     },
     {
       "date": "2027-01-31",
-      "capacity": 61
+      "capacity": 57
     },
     {
       "date": "2027-02-01",
-      "capacity": 145
+      "capacity": 141
     },
     {
       "date": "2027-02-02",
-      "capacity": 154
+      "capacity": 152
     },
     {
       "date": "2027-02-03",
-      "capacity": 117
+      "capacity": 115
     },
     {
       "date": "2027-02-04",
@@ -648,15 +608,15 @@
     },
     {
       "date": "2027-02-23",
-      "capacity": 250
+      "capacity": 252
     },
     {
       "date": "2027-02-24",
-      "capacity": 257
+      "capacity": 259
     },
     {
       "date": "2027-02-25",
-      "capacity": 156
+      "capacity": 158
     },
     {
       "date": "2027-02-26",
