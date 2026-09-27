@@ -1,7 +1,7 @@
 {
   "FacilityId": 2383,
-  "StartDate": "2026-09-26",
-  "EndDate": "2027-01-23",
+  "StartDate": "2026-09-27",
+  "EndDate": "2027-01-24",
   "Facility": {
     "FacilityId": 2383,
     "Name": "Crosbies Hut",
@@ -35,28 +35,14 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-09-05T00:00:00+12:00",
-      "FutureBookingEnds": "2028-03-26T00:00:00+13:00",
+      "FutureBookingStarts": "2026-09-06T00:00:00+12:00",
+      "FutureBookingEnds": "2028-03-27T00:00:00+13:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-09-05 00:00:00",
-      "StrFutureBookingEndDate": "2028-03-26 00:00:00"
+      "StrFutureBookingStartDate": "2026-09-06 00:00:00",
+      "StrFutureBookingEndDate": "2028-03-27 00:00:00"
     },
     "Dates": {
-      "2026-09-26T00:00:00": {
-        "Date": "2026-09-26",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 8,
-        "MaxOccupancy": 10,
-        "UnitCount": 10,
-        "ReservationCount": 2,
-        "PersonCount": 10,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-09-27T00:00:00": {
         "Date": "2026-09-27",
         "IsAvailable": false,
@@ -494,12 +480,12 @@
       "2026-10-28T00:00:00": {
         "Date": "2026-10-28",
         "IsAvailable": true,
-        "TotalAvailable": 4,
+        "TotalAvailable": 6,
         "TotalAvailableUnit": 8,
         "MaxOccupancy": 10,
         "UnitCount": 10,
         "ReservationCount": 2,
-        "PersonCount": 6,
+        "PersonCount": 4,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1718,6 +1704,20 @@
         "UnitCount": 10,
         "ReservationCount": 1,
         "PersonCount": 10,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
+      },
+      "2027-01-24T00:00:00": {
+        "Date": "2027-01-24",
+        "IsAvailable": true,
+        "TotalAvailable": 10,
+        "TotalAvailableUnit": 10,
+        "MaxOccupancy": 10,
+        "UnitCount": 10,
+        "ReservationCount": 0,
+        "PersonCount": 0,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
