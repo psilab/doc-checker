@@ -31,7 +31,7 @@ Two rules, both firing only on a transition between runs, and both using `minFre
 ## Workflow flow
 
 1. Copy `data/*.json` → `data.old/`
-2. Run `fetch.js` → updates `data/*.json`
+2. Run `fetch.js` → updates `data/*.json`. Each hut is fetched independently: a failed one keeps its previous file and turns the run red, but the steps below still run so the other huts get published
 3. Run `notify.js` → compares old vs new, sends Telegram if needed
 4. Commit `data/` if changed
 5. Deploy to GitHub Pages

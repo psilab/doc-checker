@@ -40,12 +40,14 @@ jobs:
           API_BASE_URL: ${{ vars.API_BASE_URL }}
 
       - name: Notify Telegram on freed dates
+        if: ${{ !cancelled() }}
         run: node notify.js
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ vars.TELEGRAM_CHAT_ID }}
 
       - name: Commit only if data changed
+        if: ${{ !cancelled() }}
         run: |
           if git diff --quiet data/; then
             echo "No changes in data/"
@@ -58,12 +60,15 @@ jobs:
           fi
 
       - name: Setup Pages
+        if: ${{ !cancelled() }}
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: ${{ !cancelled() }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Deploy to GitHub Pages
+        if: ${{ !cancelled() }}
         uses: actions/deploy-pages@v4

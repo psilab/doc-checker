@@ -227,22 +227,27 @@ async function fetchAklHut(hut, token) {
     console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${days.length} days over ${months} months, capacity ${maxCapacity})`);
 }
 
+// One host timing out must not cost every other hut its update. A failed hut keeps
+// yesterday's file, so notify.js sees no change for it; the exit code still goes red
+// so the run shows the failure, and the workflow commits and deploys regardless.
 async function run() {
     let aklToken = null;
 
     for (const hut of huts) {
-        if (hut.source === "akl") {
-            // The token lasts about fifteen minutes and is not tied to a property, so one
-            // scrape covers the whole run however many Auckland Council entries are listed.
-            aklToken ??= await fetchAklToken(hut);
-            await fetchAklHut(hut, aklToken);
-        } else {
-            await fetchDocHut(hut);
+        try {
+            if (hut.source === "akl") {
+                // The token lasts about fifteen minutes and is not tied to a property, so one
+                // scrape covers the whole run however many Auckland Council entries are listed.
+                aklToken ??= await fetchAklToken(hut);
+                await fetchAklHut(hut, aklToken);
+            } else {
+                await fetchDocHut(hut);
+            }
+        } catch (err) {
+            console.error(err);
+            process.exitCode = 1;
         }
     }
 }
 
-run().catch((err) => {
-    console.error(err);
-    process.exit(1);
-});
+run();
