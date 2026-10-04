@@ -120,6 +120,23 @@ const AKL_API_HEADERS = {
 // The closing quote matters: without it a chunk boundary can hand back a truncated token.
 const AKL_TOKEN_RE = /initialToken\\?":\\?"(eyJ[\w-]+\.eyJ[\w-]+\.[\w-]+)\\?"/;
 
+// Both hosts sit behind gateways that give up on a slow backend, and since October 2026
+// roughly every other request runs past that. Which ones is random - the same month
+// fails, then succeeds on the next try - so a 5xx is retried rather than fatal.
+const AKL_ATTEMPTS = 6;
+const AKL_RETRY_PAUSE_MS = 5000;
+
+async function aklFetch(hut, url, headers) {
+    for (let attempt = 1; ; attempt++) {
+        const res = await fetch(url, { headers });
+        if (res.status < 500 || attempt === AKL_ATTEMPTS) return res;
+
+        await res.text();
+        console.warn(`[${hut.name}] ${res.status} ${res.statusText}, retrying (${attempt}/${AKL_ATTEMPTS - 1})`);
+        await new Promise(resolve => setTimeout(resolve, AKL_RETRY_PAUSE_MS));
+    }
+}
+
 const pad = n => String(n).padStart(2, "0");
 
 // Their API wants a local wall-clock stamp with no zone. Copied from the site's own
@@ -153,7 +170,7 @@ function aklMonthsFor(hut) {
 // The token only ships inside the Next.js app on an accommodation-details page, and it sits
 // in the first ~65 KB of a 5.5 MB document. Read until it turns up, then drop the rest.
 async function fetchAklToken(hut) {
-    const res = await fetch(`${AKL_PAGE_BASE}/${hut.id}.html`, { headers: AKL_PAGE_HEADERS });
+    const res = await aklFetch(hut, `${AKL_PAGE_BASE}/${hut.id}.html`, AKL_PAGE_HEADERS);
 
     if (!res.ok) throw new Error(`[${hut.name}] Token page error: ${res.status} ${res.statusText}`);
 
@@ -177,7 +194,7 @@ async function fetchAklMonth(hut, token, first, last) {
     const url = `${AKL_API}?reqType=availability&productId=${hut.productId}` +
         `&firstDay=${aklStamp(first)}&lastDay=${aklStamp(last)}`;
 
-    const res = await fetch(url, { headers: { ...AKL_API_HEADERS, "Authorization": `Bearer ${token}` } });
+    const res = await aklFetch(hut, url, { ...AKL_API_HEADERS, "Authorization": `Bearer ${token}` });
 
     if (!res.ok) throw new Error(`[${hut.name}] API error: ${res.status} ${res.statusText}`);
 

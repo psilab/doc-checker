@@ -213,6 +213,18 @@ host itself is not behind the filter and needs only `Origin`/`Referer`.
 - Errors come back as **HTTP 200** with an error object in the body, so the response shape
   is the only reliable check.
 
+### The 20-second gateway (from 2026-10-02)
+
+The API host is fronted by a Microsoft Azure Application Gateway that answers
+`504 Gateway Time-out` after exactly 20 s. In September a month took 6–10 s; from October the
+backend takes 3–17 s or never answers, and roughly half of all calls hit the cutoff. Probed
+by hand on 2026-10-05 with curl: it is **random per call**, not tied to a month or span size —
+October passed in 3 s, then failed on a repeat; a 3-night span failed where the whole of
+December passed. No cache either: a call that just timed out is no likelier to pass next.
+The token page has returned 504 too. `aklFetch()` retries any 5xx up to six attempts, 5 s
+apart, which brings a month to ~1.5% failure. Worst case is ~15 minutes, about the token's
+lifetime, so a run that slow ends in a 401 rather than hanging.
+
 ### Enumerating properties
 
 There is no cheap listing. `find-accommodation.html` renders its results client-side from
