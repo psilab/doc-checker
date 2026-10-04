@@ -36,8 +36,9 @@ function daysOf(hut, json) {
 // A single leftover bed in a hut or on a campsite is no use to a party, so those have to
 // open up at least two. For a whole-unit type any free space at all means the entire place
 // came free, so one is enough - and that holds even for a unit that only sleeps one.
+// A bigger party sets its own bar per hut in config.json. Same helper lives in index.html.
 function minFree(hut) {
-    return hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2;
+    return hut.minFree ?? (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2);
 }
 
 function addDays(date, n) {
@@ -71,7 +72,7 @@ function freedDates(hut, oldFree, newFree, threshold) {
 
     return watched
         .filter(date => date in oldFree && date in newFree)
-        .filter(date => oldFree[date] === 0 && newFree[date] >= threshold)
+        .filter(date => oldFree[date] < threshold && newFree[date] >= threshold)
         .map(date => `📅 ${date} — ${plural(newFree[date], "place")} available`);
 }
 

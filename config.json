@@ -10,13 +10,14 @@
       "source": "doc",
       "id": 2383,
       "name": "Crosbies Hut",
-      "watchDates": []
+      "minFree": 4,
+      "watchDates": ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-31"]
     },
     {
       "source": "doc",
       "id": 2502,
       "name": "Peach Cove Hut",
-      "watchDates": ["2026-10-03", "2026-10-10", "2026-10-17", "2026-10-24", "2026-10-25", "2026-10-31"]
+      "watchDates": []
     },
     {
       "source": "doc",
@@ -32,6 +33,7 @@
       "name": "Tāwharanui campground",
       "watchDates": [],
       "watchStays": [
+        { "nights": 3, "from": "2026-10-23", "to": "2026-10-25" },
         { "nights": 3, "from": "2026-12-18", "to": "2027-01-31" }
       ]
     }

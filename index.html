@@ -228,7 +228,7 @@
     // A DOC hut or a campground with one bed left is no use to a party, so it reads as full.
     // For a whole-unit type any free space means the entire place is free.
     function minFree(hut) {
-        return hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2;
+        return hut.minFree ?? (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2);
     }
 
     // A watchStays range is watched just as much as a single watchDate is, so it gets the
