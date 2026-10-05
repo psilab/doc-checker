@@ -3,12 +3,8 @@
   "maxCapacity": 290,
   "days": [
     {
-      "date": "2026-10-04",
-      "capacity": 214
-    },
-    {
       "date": "2026-10-05",
-      "capacity": 203
+      "capacity": 196
     },
     {
       "date": "2026-10-06",
@@ -16,19 +12,19 @@
     },
     {
       "date": "2026-10-07",
-      "capacity": 218
+      "capacity": 214
     },
     {
       "date": "2026-10-08",
-      "capacity": 198
+      "capacity": 194
     },
     {
       "date": "2026-10-09",
-      "capacity": 189
+      "capacity": 185
     },
     {
       "date": "2026-10-10",
-      "capacity": 188
+      "capacity": 192
     },
     {
       "date": "2026-10-11",
@@ -140,7 +136,7 @@
     },
     {
       "date": "2026-11-07",
-      "capacity": 122
+      "capacity": 121
     },
     {
       "date": "2026-11-08",
@@ -164,11 +160,11 @@
     },
     {
       "date": "2026-11-13",
-      "capacity": 91
+      "capacity": 86
     },
     {
       "date": "2026-11-14",
-      "capacity": 90
+      "capacity": 85
     },
     {
       "date": "2026-11-15",
@@ -704,11 +700,11 @@
     },
     {
       "date": "2027-03-28",
-      "capacity": 21
+      "capacity": 19
     },
     {
       "date": "2027-03-29",
-      "capacity": 236
+      "capacity": 234
     },
     {
       "date": "2027-03-30",
