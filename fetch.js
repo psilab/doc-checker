@@ -13,10 +13,13 @@ const today = new Date().toISOString().slice(0, 10);
 const NIGHTS_MIN = 120;
 const NIGHTS_MAX = 365;
 
-// DOC ids and Auckland Council ids are separate number spaces, so AKL files carry a prefix
-// to keep them from ever colliding. Same helper lives in notify.js and index.html.
+// DOC, Auckland Council and every Newbook property number their ids separately, so the
+// non-DOC files carry a prefix to keep them from ever colliding. Same helper lives in
+// notify.js and index.html.
 function dataKey(hut) {
-    return hut.source === "akl" ? `akl-${hut.id}` : String(hut.id);
+    if (hut.source === "akl") return `akl-${hut.id}`;
+    if (hut.source === "newbook") return `newbook-${hut.property}-${hut.id}`;
+    return String(hut.id);
 }
 
 // The window has to reach whatever is being watched, whether that is a single night or the
@@ -244,6 +247,74 @@ async function fetchAklHut(hut, token) {
     console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${days.length} days over ${months} months, capacity ${maxCapacity})`);
 }
 
+// --- Newbook (Camp Waipu Cove) ---------------------------------------------------------
+//
+// Third source: a private holiday park on Newbook's hosted booking engine. Its calendar
+// endpoint needs no cookie, token or form fields - only the API address, which carries a
+// hash and so is read off the booking page each run rather than hardcoded. It reports
+// per night whether any site of a category is free, never how many. See NOTES.md.
+
+const NEWBOOK_BASE = "https://bookingsap.newbook.cloud/online";
+
+// One request answers any span, so the usual window is a year and it only grows to reach
+// a watched date further out.
+const NEWBOOK_MONTHS_MIN = 12;
+
+const NEWBOOK_API_RE = /newbook_api_path='([^']+)'/;
+const NEWBOOK_DAY_RE = /<td class="day ([^"]+)" data-date="(\d{4}-\d{2}-\d{2})"/g;
+
+function newbookMonthsFor(hut) {
+    const furthest = furthestWatched(hut);
+    if (!furthest) return NEWBOOK_MONTHS_MIN;
+
+    const [year, month] = furthest.split("-").map(Number);
+    const now = new Date();
+    return Math.max(NEWBOOK_MONTHS_MIN, (year - now.getFullYear()) * 12 + (month - 1 - now.getMonth()) + 1);
+}
+
+async function fetchNewbookCategory(hut) {
+    const page = await fetch(`${NEWBOOK_BASE}/${hut.property}`);
+    if (!page.ok) throw new Error(`[${hut.name}] Booking page error: ${page.status} ${page.statusText}`);
+
+    const api = (await page.text()).match(NEWBOOK_API_RE)?.[1];
+    if (!api) throw new Error(`[${hut.name}] No API address found on the booking page`);
+
+    const months = newbookMonthsFor(hut);
+    const now = new Date();
+    const last = new Date(now.getFullYear(), now.getMonth() + months - 1, 1);
+    const month = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
+
+    const res = await fetch(`${api}newbook_api_action=data`, {
+        method: "POST",
+        body: new URLSearchParams({
+            query: "newbook_calendar_update_table_dates",
+            category_id: hut.id,
+            look_up_date: month(now),
+            period_from: month(now),
+            period_to: month(last)
+        })
+    });
+
+    if (!res.ok) throw new Error(`[${hut.name}] API error: ${res.status} ${res.statusText}`);
+
+    const text = await res.text();
+    const rows = JSON.parse(text)?.calendar_data?.table_rows;
+    if (typeof rows !== "string") throw new Error(`[${hut.name}] API returned ${text.slice(0, 300)}`);
+
+    // Each night is a cell whose first class is its state - "available" or "booked" - and
+    // whose others, like closed_arrival, are booking rules rather than availability.
+    const days = [...rows.matchAll(NEWBOOK_DAY_RE)]
+        .map(([, classes, date]) => ({ date, available: classes.split(" ")[0] === "available" }))
+        .filter(d => d.date >= today);
+
+    if (!days.length) throw new Error(`[${hut.name}] API returned no days`);
+
+    const data = { property: hut.property, categoryId: hut.id, days };
+
+    fs.writeFileSync(`data/${dataKey(hut)}.json`, JSON.stringify(data, null, 2) + "\n");
+    console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${days.length} days over ${months} months)`);
+}
+
 // One host timing out must not cost every other hut its update. A failed hut keeps
 // yesterday's file, so notify.js sees no change for it; the exit code still goes red
 // so the run shows the failure, and the workflow commits and deploys regardless.
@@ -257,6 +328,8 @@ async function run() {
                 // scrape covers the whole run however many Auckland Council entries are listed.
                 aklToken ??= await fetchAklToken(hut);
                 await fetchAklHut(hut, aklToken);
+            } else if (hut.source === "newbook") {
+                await fetchNewbookCategory(hut);
             } else {
                 await fetchDocHut(hut);
             }

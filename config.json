@@ -36,6 +36,16 @@
         { "nights": 3, "from": "2026-10-23", "to": "2026-10-25" },
         { "nights": 3, "from": "2026-12-18", "to": "2027-01-31" }
       ]
+    },
+    {
+      "source": "newbook",
+      "property": "camp_waipu_cove",
+      "id": 6,
+      "name": "Camp Waipu Cove — Non Powered Site",
+      "watchDates": [],
+      "watchStays": [
+        { "nights": 3, "from": "2026-10-23", "to": "2026-10-25" }
+      ]
     }
   ]
 }

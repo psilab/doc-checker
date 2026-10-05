@@ -14,15 +14,23 @@ const DAY = 86400000;
 // only ever reports 0 or 6 - never a partial count the way a campground or a hut does.
 const WHOLE_UNIT_TYPES = ["Bach", "Tiny home", "Lodge", "Glamping", "Tent"];
 
-// DOC ids and Auckland Council ids are separate number spaces, so AKL files carry a prefix
-// to keep them from ever colliding. Same helper lives in fetch.js and index.html.
+// DOC, Auckland Council and every Newbook property number their ids separately, so the
+// non-DOC files carry a prefix to keep them from ever colliding. Same helper lives in
+// fetch.js and index.html.
 function dataKey(hut) {
-    return hut.source === "akl" ? `akl-${hut.id}` : String(hut.id);
+    if (hut.source === "akl") return `akl-${hut.id}`;
+    if (hut.source === "newbook") return `newbook-${hut.property}-${hut.id}`;
+    return String(hut.id);
 }
 
-// The two sources store different shapes, so flatten both to { date, free } per night and
+// The sources store different shapes, so flatten them all to { date, free } per night and
 // let everything downstream stay source-agnostic. Same helper lives in index.html.
 function daysOf(hut, json) {
+    if (hut.source === "newbook") {
+        // Newbook only says whether any site is free, so a free night counts as one place.
+        return (json?.days ?? []).map(d => ({ date: d.date, free: d.available ? 1 : 0 }));
+    }
+
     if (hut.source === "akl") {
         // Overbooked or closed days come back as a negative capacity. Nothing downstream
         // wants to reason about that, so it is just as unavailable as zero.
@@ -36,9 +44,11 @@ function daysOf(hut, json) {
 // A single leftover bed in a hut or on a campsite is no use to a party, so those have to
 // open up at least two. For a whole-unit type any free space at all means the entire place
 // came free, so one is enough - and that holds even for a unit that only sleeps one.
+// Newbook reports nothing finer than free or not, so one is all it can ever show.
 // A bigger party sets its own bar per hut in config.json. Same helper lives in index.html.
 function minFree(hut) {
-    return hut.minFree ?? (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2);
+    const binary = hut.source === "newbook" || (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type));
+    return hut.minFree ?? (binary ? 1 : 2);
 }
 
 function addDays(date, n) {
@@ -73,7 +83,7 @@ function freedDates(hut, oldFree, newFree, threshold) {
     return watched
         .filter(date => date in oldFree && date in newFree)
         .filter(date => oldFree[date] < threshold && newFree[date] >= threshold)
-        .map(date => `📅 ${date} — ${plural(newFree[date], "place")} available`);
+        .map(date => `📅 ${date} — ${hut.source === "newbook" ? "a site" : plural(newFree[date], "place")} available`);
 }
 
 // --- watchStays: a run of consecutive nights anywhere inside a range ------------------
@@ -138,7 +148,10 @@ function freedStays(hut, oldFree, newFree, threshold) {
                 smallest = Math.min(smallest, newFree[date]);
             }
 
-            lines.push(`🏕 ${first} – ${last} — ${plural(nights, "night")} together, at least ${plural(smallest, "place")} free`);
+            // Newbook has no count to give, only that a site is free on every night.
+            const room = hut.source === "newbook" ? "a site free" : `at least ${plural(smallest, "place")} free`;
+
+            lines.push(`🏕 ${first} – ${last} — ${plural(nights, "night")} together, ${room}`);
         }
     }
 

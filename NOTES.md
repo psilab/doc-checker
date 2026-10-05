@@ -256,3 +256,36 @@ That start date is where the campground books out: 17 December still has 66 plac
 December has none, and the block runs unbroken to the end of January. As of 2026-09-03 those
 45 nights hold no run of even two free nights — the only gaps are single days (24 December,
 then 24, 28 and 31 January) — so the rule is watching a genuinely solid stretch.
+
+## Camp Waipu Cove (Newbook) — wired up 2026-10-05
+
+A private holiday park whose bookings run on Newbook's hosted engine,
+`https://bookingsap.newbook.cloud/online/camp_waipu_cove`. Everything below was worked out
+with plain curl: no bot filter, no token, no browser needed.
+
+The booking page embeds `newbook_api_path='…/generated_api_files/{hash}.php?'`. The hash is
+per property and may change, so `fetch.js` reads it off the page each run. The calendar the
+page draws per accommodation type comes from:
+
+```
+POST {newbook_api_path}newbook_api_action=data
+query=newbook_calendar_update_table_dates&category_id={id}
+&look_up_date=YYYY-MM&period_from=YYYY-MM&period_to=YYYY-MM
+```
+
+No cookie and none of the search-form fields are needed. One call answers any span
+(15 months tried) in under a second. The response is JSON whose `calendar_data.table_rows`
+is HTML: one `<td class="day {state} {rules}" data-date="YYYY-MM-DD">` per night, where the
+state is `available` or `booked` and the rules are `closed_arrival` / `closed_departure`.
+There is **no count**: a night is free if any site of that type is. Checked against the
+quote endpoint (`availability_chart_responsive&force_category_id=…`): 1–4 Nov, marked
+available, quoted bookable; 23–26 Oct, marked booked, came back with a booking error.
+
+Category ids (from the `data-category_id` of each box on the search results):
+6 Non Powered Site, 4 Powered Site, 14 Premium Powered Site, 15 Powered Dune Front Site,
+16 Glamping Yurt, 3 Kitchen Cabin, 7 Deluxe Kitchen Cabin, 8 One Bedroom Self-Contained
+Cabin, 12 Deluxe One Bedroom, 13 Accessible Deluxe One Bedroom, 9 Two Bedroom Self-Contained.
+
+Peak summer (20 Dec – 7 Feb) has minimum stays — 7 nights for sites, 4 for cabins, unless a
+shorter booking fills a gap. The calendar is per night and does not apply that rule, so a
+short free stretch in summer may still not be bookable.

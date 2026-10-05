@@ -199,15 +199,23 @@
             String(d.getDate()).padStart(2, "0");
     }
 
-    // DOC ids and Auckland Council ids are separate number spaces, so AKL files carry a
-    // prefix to keep them from ever colliding. Same helper lives in fetch.js and notify.js.
+    // DOC, Auckland Council and every Newbook property number their ids separately, so the
+    // non-DOC files carry a prefix to keep them from ever colliding. Same helper lives in
+    // fetch.js and notify.js.
     function dataKey(hut) {
-        return hut.source === "akl" ? `akl-${hut.id}` : String(hut.id);
+        if (hut.source === "akl") return `akl-${hut.id}`;
+        if (hut.source === "newbook") return `newbook-${hut.property}-${hut.id}`;
+        return String(hut.id);
     }
 
-    // The two sources store different shapes, so flatten both to { date, free, max } per
+    // The sources store different shapes, so flatten them all to { date, free, max } per
     // night and let everything downstream stay source-agnostic. Also lives in notify.js.
     function daysOf(hut, json) {
+        if (hut.source === "newbook") {
+            // Newbook only says whether any site is free, so a free night counts as one place.
+            return (json?.days ?? []).map(d => ({ date: d.date, free: d.available ? 1 : 0, max: 1 }));
+        }
+
         if (hut.source === "akl") {
             // Overbooked or closed days come back as a negative capacity. Nothing
             // downstream wants to reason about that, so it is just as unavailable as zero.
@@ -226,9 +234,11 @@
     }
 
     // A DOC hut or a campground with one bed left is no use to a party, so it reads as full.
-    // For a whole-unit type any free space means the entire place is free.
+    // For a whole-unit type any free space means the entire place is free, and Newbook
+    // reports nothing finer than free or not.
     function minFree(hut) {
-        return hut.minFree ?? (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type) ? 1 : 2);
+        const binary = hut.source === "newbook" || (hut.source === "akl" && WHOLE_UNIT_TYPES.includes(hut.type));
+        return hut.minFree ?? (binary ? 1 : 2);
     }
 
     // A watchStays range is watched just as much as a single watchDate is, so it gets the
@@ -267,7 +277,9 @@
                         const d = dateMap[date];
 
                         if (d) {
-                            dayElem.dataset.info = date + "\n" + d.free + " of " + d.max + " places free";
+                            dayElem.dataset.info = date + "\n" + (hut.source === "newbook"
+                                ? (d.free ? "sites free" : "booked out")
+                                : d.free + " of " + d.max + " places free");
 
                             if (d.free < threshold){
                                 dayElem.classList.add("full");
