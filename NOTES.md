@@ -224,6 +224,9 @@ December passed. No cache either: a call that just timed out is no likelier to p
 The token page has returned 504 too. `aklFetch()` retries any 5xx up to six attempts, 5 s
 apart, which brings a month to ~1.5% failure. Worst case is ~15 minutes, about the token's
 lifetime, so a run that slow ends in a 401 rather than hanging.
+Six attempts still lose a month now and then (2026-10-05: January, all six 504s), so a
+month that fails outright keeps the previous run's nights and the others carry on; the
+run goes red to say part of the file is stale.
 
 ### Enumerating properties
 

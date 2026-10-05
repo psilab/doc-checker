@@ -221,18 +221,37 @@ async function fetchAklHut(hut, token) {
     const months = aklMonthsFor(hut);
     const now = new Date();
     const from = localDate(now);
+    const path = `data/${dataKey(hut)}.json`;
     const days = [];
+    const failed = [];
 
     for (let i = 0; i < months; i++) {
         const first = new Date(now.getFullYear(), now.getMonth() + i, 1, 1, 0, 0);
         const last = new Date(now.getFullYear(), now.getMonth() + i + 1, 0, 23, 59, 59);
-        const entries = await fetchAklMonth(hut, token, first, last);
+
+        let entries;
+        try {
+            entries = await fetchAklMonth(hut, token, first, last);
+        } catch (err) {
+            console.error(err.message);
+            failed.push(localDate(first).slice(0, 7));
+            continue;
+        }
 
         for (const entry of entries) {
             // Months are calendar-aligned, so the first one reaches back before today.
             const date = entry.date.slice(0, 10);
             if (date >= from) days.push({ date, capacity: entry.capacity });
         }
+    }
+
+    // Even six attempts sometimes all hit the gateway timeout. One lost month should not
+    // throw away the rest, so it keeps the previous run's nights: unchanged values cannot
+    // set off a notification, and the run still goes red below.
+    if (failed.length && fs.existsSync(path)) {
+        const previous = JSON.parse(fs.readFileSync(path, "utf8")).days ?? [];
+        days.push(...previous.filter(d => d.date >= from && failed.includes(d.date.slice(0, 7))));
+        days.sort((a, b) => a.date.localeCompare(b.date));
     }
 
     if (!days.length) throw new Error(`[${hut.name}] API returned no days`);
@@ -243,8 +262,10 @@ async function fetchAklHut(hut, token) {
 
     const data = { productId: hut.productId, maxCapacity, days };
 
-    fs.writeFileSync(`data/${dataKey(hut)}.json`, JSON.stringify(data, null, 2) + "\n");
-    console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${days.length} days over ${months} months, capacity ${maxCapacity})`);
+    fs.writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
+    console.log(`[${hut.name}] ${path} updated (${days.length} days over ${months} months, capacity ${maxCapacity})`);
+
+    if (failed.length) throw new Error(`[${hut.name}] ${failed.join(", ")} kept from the previous run`);
 }
 
 // --- Newbook (Camp Waipu Cove) ---------------------------------------------------------
