@@ -267,7 +267,13 @@ A private holiday park whose bookings run on Newbook's hosted engine,
 with plain curl: no bot filter, no token, no browser needed.
 
 The booking page embeds `newbook_api_path='…/generated_api_files/{hash}.php?'`. The hash is
-per property and may change, so `fetch.js` reads it off the page each run. The calendar the
+per property and may change, so `fetch.js` reads it off the page each run.
+
+Cloudflare fronts the host. From NZ it lets anything through, curl's default User-Agent
+included, but the 2026-10-05 20:xx run got `403 Forbidden` on the booking page from a GitHub
+runner, two runs after it had worked - so it is the runner IP, not the request. `fetch.js`
+now sends a browser User-Agent, logs `cf-mitigated` on a refusal, and stores the API
+address in the data file so a refused page can fall back to the previous run's address. The calendar the
 page draws per accommodation type comes from:
 
 ```

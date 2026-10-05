@@ -282,6 +282,19 @@ const NEWBOOK_BASE = "https://bookingsap.newbook.cloud/online";
 const NEWBOOK_MONTHS_MIN = 12;
 
 const NEWBOOK_API_RE = /newbook_api_path='([^']+)'/;
+
+// Cloudflare sits in front of Newbook. From NZ it passes anything, even curl's default
+// User-Agent, but some GitHub runner IPs get a 403 - so look like a browser, and say why
+// when it still refuses.
+const NEWBOOK_HEADERS = {
+    "User-Agent": AKL_PAGE_HEADERS["User-Agent"],
+    "Accept-Language": "en-NZ,en;q=0.9"
+};
+
+function newbookError(hut, what, res) {
+    const mitigated = res.headers.get("cf-mitigated");
+    return new Error(`[${hut.name}] ${what}: ${res.status} ${res.statusText}${mitigated ? ` (cf-mitigated: ${mitigated})` : ""}`);
+}
 const NEWBOOK_DAY_RE = /<td class="day ([^"]+)" data-date="(\d{4}-\d{2}-\d{2})"/g;
 
 function newbookMonthsFor(hut) {
@@ -293,12 +306,24 @@ function newbookMonthsFor(hut) {
     return Math.max(NEWBOOK_MONTHS_MIN, (year - now.getFullYear()) * 12 + (month - 1 - now.getMonth()) + 1);
 }
 
-async function fetchNewbookCategory(hut) {
-    const page = await fetch(`${NEWBOOK_BASE}/${hut.property}`);
-    if (!page.ok) throw new Error(`[${hut.name}] Booking page error: ${page.status} ${page.statusText}`);
+// The page is only read for the API address, so when it is refused the address the last
+// run found is just as good - the API call may well get through where the page did not.
+async function newbookApi(hut, path) {
+    const page = await fetch(`${NEWBOOK_BASE}/${hut.property}`, { headers: { ...NEWBOOK_HEADERS, "Accept": "text/html" } });
+    const api = page.ok ? (await page.text()).match(NEWBOOK_API_RE)?.[1] : null;
+    if (api) return api;
 
-    const api = (await page.text()).match(NEWBOOK_API_RE)?.[1];
-    if (!api) throw new Error(`[${hut.name}] No API address found on the booking page`);
+    const previous = fs.existsSync(path) ? JSON.parse(fs.readFileSync(path, "utf8")).api : null;
+    const why = page.ok ? `[${hut.name}] No API address found on the booking page` : newbookError(hut, "Booking page error", page).message;
+
+    if (!previous) throw new Error(why);
+    console.warn(`${why} - using the API address from the previous run`);
+    return previous;
+}
+
+async function fetchNewbookCategory(hut) {
+    const path = `data/${dataKey(hut)}.json`;
+    const api = await newbookApi(hut, path);
 
     const months = newbookMonthsFor(hut);
     const now = new Date();
@@ -307,6 +332,7 @@ async function fetchNewbookCategory(hut) {
 
     const res = await fetch(`${api}newbook_api_action=data`, {
         method: "POST",
+        headers: { ...NEWBOOK_HEADERS, "Accept": "application/json" },
         body: new URLSearchParams({
             query: "newbook_calendar_update_table_dates",
             category_id: hut.id,
@@ -316,7 +342,7 @@ async function fetchNewbookCategory(hut) {
         })
     });
 
-    if (!res.ok) throw new Error(`[${hut.name}] API error: ${res.status} ${res.statusText}`);
+    if (!res.ok) throw newbookError(hut, "API error", res);
 
     const text = await res.text();
     const rows = JSON.parse(text)?.calendar_data?.table_rows;
@@ -330,10 +356,10 @@ async function fetchNewbookCategory(hut) {
 
     if (!days.length) throw new Error(`[${hut.name}] API returned no days`);
 
-    const data = { property: hut.property, categoryId: hut.id, days };
+    const data = { property: hut.property, categoryId: hut.id, api, days };
 
-    fs.writeFileSync(`data/${dataKey(hut)}.json`, JSON.stringify(data, null, 2) + "\n");
-    console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${days.length} days over ${months} months)`);
+    fs.writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
+    console.log(`[${hut.name}] ${path} updated (${days.length} days over ${months} months)`);
 }
 
 // One host timing out must not cost every other hut its update. A failed hut keeps
