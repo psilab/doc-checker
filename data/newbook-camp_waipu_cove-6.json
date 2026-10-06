@@ -4,10 +4,6 @@
   "api": "https://bookingsap.newbook.cloud/online/generated_api_files/93f32891c166cce22b7f15a48ed17d80.php?",
   "days": [
     {
-      "date": "2026-10-05",
-      "available": false
-    },
-    {
       "date": "2026-10-06",
       "available": true
     },
