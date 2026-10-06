@@ -4,8 +4,12 @@ on:
   push:
     branches: [ main ]
 
+  # DOC and Newbook every quarter hour, Auckland Council only on the hour: its gateway is
+  # slow and its site asks not to be scraped hard. The Fetch step tells them apart by
+  # github.event.schedule, so the two strings must match the ones there.
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 * * * *"
+    - cron: "15,30,45 * * * *"
 
   workflow_dispatch:
 
@@ -14,17 +18,23 @@ permissions:
   pages: write
   id-token: write
 
+# Queue rather than cancel: a run with Auckland Council takes 5-15 minutes, and the next
+# quarter-hour run must not kill it halfway.
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # A queued run would otherwise check out the commit it was queued on and then fail
+      # to push over the data commit of the run it waited for.
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,6 +48,7 @@ jobs:
           node fetch.js
         env:
           API_BASE_URL: ${{ vars.API_BASE_URL }}
+          SOURCES: ${{ github.event.schedule == '15,30,45 * * * *' && 'doc,newbook' || '' }}
 
       - name: Notify Telegram on freed dates
         if: ${{ !cancelled() }}

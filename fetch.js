@@ -7,6 +7,10 @@ if (!base) throw new Error("API_BASE_URL is not set");
 
 const today = new Date().toISOString().slice(0, 10);
 
+// Auckland Council is fetched hourly and the rest every quarter hour, so the workflow can
+// limit a run to some sources. Unset means all of them.
+const sources = process.env.SOURCES ? process.env.SOURCES.split(",") : null;
+
 // The API returns as many nights as asked for, but every night costs payload that gets
 // committed to the repo. Fetch the usual window, and stretch it only for huts whose
 // watched dates sit beyond it - otherwise notify.js silently never sees those dates.
@@ -385,6 +389,8 @@ async function run() {
     let aklToken = null;
 
     for (const hut of huts) {
+        if (sources && !sources.includes(hut.source)) continue;
+
         try {
             if (hut.source === "akl") {
                 // The token lasts about fifteen minutes and is not tied to a property, so one

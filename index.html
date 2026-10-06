@@ -247,12 +247,17 @@
         return hut.minFree ?? (binary ? 1 : 2);
     }
 
-    // The workflow runs daily, and GitHub often starts a scheduled run hours late, so data
-    // only counts as stale once a whole run has clearly been missed.
-    const STALE_AFTER_MS = 36 * 3600 * 1000;
+    // Auckland Council is fetched hourly and the rest every quarter hour, and GitHub often
+    // starts or drops scheduled runs late, so data only counts as stale once a couple of
+    // hourly runs have clearly been missed.
+    const STALE_AFTER_MS = 3 * 3600 * 1000;
 
+    // With runs every quarter hour a date alone says little about today, so today gets a time.
     function shortDate(iso) {
-        return new Date(iso).toLocaleDateString("en-NZ", { day: "numeric", month: "short" });
+        const d = new Date(iso);
+        return localDate(d) === localDate(new Date())
+            ? d.toLocaleTimeString("en-NZ", { hour: "numeric", minute: "2-digit" })
+            : d.toLocaleDateString("en-NZ", { day: "numeric", month: "short" });
     }
 
     // A source being down for a day does not fail the run, so this is where it shows: the
