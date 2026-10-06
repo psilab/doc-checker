@@ -80,6 +80,19 @@ jobs:
         with:
           path: .
 
+      # The artifact store is eventually consistent: now and then deploy-pages asks for the
+      # artifact just uploaded and is told there is none (2026-10-06 14:44). Rather than
+      # fail the run and send an email, wait and deploy once more.
       - name: Deploy to GitHub Pages
+        id: deploy
         if: ${{ !cancelled() }}
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retrying the deploy
+        if: ${{ !cancelled() && steps.deploy.outcome == 'failure' }}
+        run: sleep 30
+
+      - name: Retry deploy to GitHub Pages
+        if: ${{ !cancelled() && steps.deploy.outcome == 'failure' }}
         uses: actions/deploy-pages@v4
