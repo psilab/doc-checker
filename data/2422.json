@@ -35,12 +35,12 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-09-15T00:00:00+12:00",
-      "FutureBookingEnds": "2028-04-06T00:00:00+12:00",
+      "FutureBookingStarts": "2026-09-16T00:00:00+12:00",
+      "FutureBookingEnds": "2028-04-07T00:00:00+12:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-09-15 00:00:00",
-      "StrFutureBookingEndDate": "2028-04-06 00:00:00"
+      "StrFutureBookingStartDate": "2026-09-16 00:00:00",
+      "StrFutureBookingEndDate": "2028-04-07 00:00:00"
     },
     "Dates": {
       "2026-10-06T00:00:00": {
@@ -88,12 +88,12 @@
       "2026-10-09T00:00:00": {
         "Date": "2026-10-09",
         "IsAvailable": true,
-        "TotalAvailable": 5,
-        "TotalAvailableUnit": 60,
+        "TotalAvailable": 3,
+        "TotalAvailableUnit": 59,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 20,
-        "PersonCount": 73,
+        "ReservationCount": 21,
+        "PersonCount": 75,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -648,12 +648,12 @@
       "2026-11-18T00:00:00": {
         "Date": "2026-11-18",
         "IsAvailable": true,
-        "TotalAvailable": 71,
-        "TotalAvailableUnit": 77,
+        "TotalAvailable": 74,
+        "TotalAvailableUnit": 78,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 3,
-        "PersonCount": 7,
+        "ReservationCount": 2,
+        "PersonCount": 4,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -872,12 +872,12 @@
       "2026-12-04T00:00:00": {
         "Date": "2026-12-04",
         "IsAvailable": true,
-        "TotalAvailable": 59,
-        "TotalAvailableUnit": 72,
+        "TotalAvailable": 51,
+        "TotalAvailableUnit": 71,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 8,
-        "PersonCount": 19,
+        "ReservationCount": 9,
+        "PersonCount": 27,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-06T07:24:18.448Z"
+  "fetchedAt": "2026-10-06T14:18:12.181Z"
 }
