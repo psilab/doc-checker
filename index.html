@@ -64,6 +64,12 @@
             margin-bottom: 10px;
         }
 
+        .hut .stale{
+            margin: -6px 0 10px;
+            font-size: 12px;
+            color: #888;
+        }
+
         .flatpickr-prev-month,
         .flatpickr-next-month,
         .flatpickr-current-month{
@@ -241,6 +247,30 @@
         return hut.minFree ?? (binary ? 1 : 2);
     }
 
+    // The workflow runs daily, and GitHub often starts a scheduled run hours late, so data
+    // only counts as stale once a whole run has clearly been missed.
+    const STALE_AFTER_MS = 36 * 3600 * 1000;
+
+    function shortDate(iso) {
+        return new Date(iso).toLocaleDateString("en-NZ", { day: "numeric", month: "short" });
+    }
+
+    // A source being down for a day does not fail the run, so this is where it shows: the
+    // whole file not refreshed, or single months carried over from an earlier run.
+    function staleNote(data) {
+        const notes = [];
+
+        if (data.fetchedAt && Date.now() - Date.parse(data.fetchedAt) > STALE_AFTER_MS) {
+            notes.push("last updated " + shortDate(data.fetchedAt));
+        }
+
+        for (const [month, at] of Object.entries(data.stale ?? {})) {
+            notes.push(MONTHS[Number(month.slice(5)) - 1] + " from " + (at ? shortDate(at) : "an earlier run"));
+        }
+
+        return notes.length ? "Slightly out of date: " + notes.join(", ") : "";
+    }
+
     // A watchStays range is watched just as much as a single watchDate is, so it gets the
     // same outline - otherwise a rule in config.json would show nowhere on the calendar.
     function isWatched(hut, date) {
@@ -255,6 +285,14 @@
 
                 const days = daysOf(hut, data);
                 if (!days.length) return;
+
+                const note = staleNote(data);
+                if (note) {
+                    const p = document.createElement("p");
+                    p.className = "stale";
+                    p.textContent = note;
+                    container.appendChild(p);
+                }
 
                 const threshold = minFree(hut);
                 const dateMap = {};

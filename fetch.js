@@ -74,6 +74,7 @@ async function fetchDocHut(hut) {
     }
 
     delete data.Message;
+    data.fetchedAt = new Date().toISOString();
 
     fs.writeFileSync(`data/${dataKey(hut)}.json`, JSON.stringify(data, null, 2) + "\n");
     console.log(`[${hut.name}] data/${dataKey(hut)}.json updated (${nights} nights)`);
@@ -248,11 +249,19 @@ async function fetchAklHut(hut, token) {
     // Even six attempts sometimes all hit the gateway timeout. One lost month should not
     // throw away the rest, so it keeps the previous run's nights: unchanged values cannot
     // set off a notification, and the run still goes red below.
-    if (failed.length && fs.existsSync(path)) {
-        const previous = JSON.parse(fs.readFileSync(path, "utf8")).days ?? [];
-        days.push(...previous.filter(d => d.date >= from && failed.includes(d.date.slice(0, 7))));
-        days.sort((a, b) => a.date.localeCompare(b.date));
+    const previous = failed.length && fs.existsSync(path) ? JSON.parse(fs.readFileSync(path, "utf8")) : null;
+    const stale = {};
+
+    for (const month of failed) {
+        const kept = (previous?.days ?? []).filter(d => d.date >= from && d.date.slice(0, 7) === month);
+        if (!kept.length) continue;
+
+        days.push(...kept);
+        // A month carried over again keeps the time it was last really fetched, so the
+        // page can say how old it is rather than how old the file is.
+        stale[month] = previous.stale?.[month] ?? previous.fetchedAt ?? null;
     }
+    days.sort((a, b) => a.date.localeCompare(b.date));
 
     if (!days.length) throw new Error(`[${hut.name}] API returned no days`);
 
@@ -260,12 +269,13 @@ async function fetchAklHut(hut, token) {
     // its capacity. Only the calendar's green/orange shading depends on it.
     const maxCapacity = days.reduce((max, d) => Math.max(max, d.capacity), 0);
 
-    const data = { productId: hut.productId, maxCapacity, days };
+    const data = { productId: hut.productId, maxCapacity, fetchedAt: new Date().toISOString(), days };
+    if (Object.keys(stale).length) data.stale = stale;
 
     fs.writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
     console.log(`[${hut.name}] ${path} updated (${days.length} days over ${months} months, capacity ${maxCapacity})`);
 
-    if (failed.length) throw new Error(`[${hut.name}] ${failed.join(", ")} kept from the previous run`);
+    if (failed.length) warn(`[${hut.name}] ${failed.join(", ")} kept from the previous run`);
 }
 
 // --- Newbook (Camp Waipu Cove) ---------------------------------------------------------
@@ -356,15 +366,21 @@ async function fetchNewbookCategory(hut) {
 
     if (!days.length) throw new Error(`[${hut.name}] API returned no days`);
 
-    const data = { property: hut.property, categoryId: hut.id, api, days };
+    const data = { property: hut.property, categoryId: hut.id, api, fetchedAt: new Date().toISOString(), days };
 
     fs.writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
     console.log(`[${hut.name}] ${path} updated (${days.length} days over ${months} months)`);
 }
 
+// A GitHub annotation rather than a failed run: a failed run emails, and a source being
+// down for a day is routine here. The page says when data is stale instead.
+function warn(message) {
+    console.log(`::warning::${message}`);
+}
+
 // One host timing out must not cost every other hut its update. A failed hut keeps
-// yesterday's file, so notify.js sees no change for it; the exit code still goes red
-// so the run shows the failure, and the workflow commits and deploys regardless.
+// yesterday's file, fetchedAt included, so notify.js sees no change for it and the page
+// shows how old it is.
 async function run() {
     let aklToken = null;
 
@@ -382,7 +398,7 @@ async function run() {
             }
         } catch (err) {
             console.error(err);
-            process.exitCode = 1;
+            warn(err.message);
         }
     }
 }

@@ -225,8 +225,9 @@ The token page has returned 504 too. `aklFetch()` retries any 5xx up to six atte
 apart, which brings a month to ~1.5% failure. Worst case is ~15 minutes, about the token's
 lifetime, so a run that slow ends in a 401 rather than hanging.
 Six attempts still lose a month now and then (2026-10-05: January, all six 504s), so a
-month that fails outright keeps the previous run's nights and the others carry on; the
-run goes red to say part of the file is stale.
+month that fails outright keeps the previous run's nights and the others carry on. The
+file records it under `stale` (month → when it was last really fetched), and the page
+shows it as a small note. The run itself stays green: a red run emails, and this is routine.
 
 ### Enumerating properties
 
