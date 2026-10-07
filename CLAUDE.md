@@ -30,7 +30,7 @@ Two rules, both firing only on a transition between runs, and both using `minFre
 
 ## Workflow flow
 
-Runs every quarter hour: on the hour for every source, at :15, :30 and :45 for DOC and Newbook only (the workflow passes `SOURCES` to `fetch.js`, keyed on which cron fired). Runs queue rather than cancel each other, and check out `main` rather than the triggering commit.
+Runs every quarter hour: on the hour for every source, at :15, :30 and :45 for DOC and Newbook only (the workflow passes `SOURCES` to `fetch.js`, keyed on which cron fired). GitHub's own scheduler skips most of these, so two cron-job.org jobs drive the real cadence by calling `workflow_dispatch` with a `sources` input (`doc,newbook` at :15/:30/:45, empty on the hour), using a fine-grained token of the user's that only has Actions write on this repo. The `schedule:` entries stay as a fallback. Runs queue rather than cancel each other, and check out `main` rather than the triggering commit.
 
 1. Copy `data/*.json` → `data.old/`
 2. Run `fetch.js` → updates `data/*.json`. Each hut is fetched independently: a failed one keeps its previous file and logs a `::warning::` annotation, never a failed run (a failed run emails the user, and a source down for a day is routine). Every file carries `fetchedAt`, and AKL files a `stale` map of months carried over from an earlier run; the page shows a small "slightly out of date" note from those
