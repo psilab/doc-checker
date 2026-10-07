@@ -1,15 +1,11 @@
 {
   "productId": 220233,
   "maxCapacity": 290,
-  "fetchedAt": "2026-10-06T23:48:47.292Z",
+  "fetchedAt": "2026-10-07T04:25:05.215Z",
   "days": [
     {
-      "date": "2026-10-06",
-      "capacity": 201
-    },
-    {
       "date": "2026-10-07",
-      "capacity": 178
+      "capacity": 169
     },
     {
       "date": "2026-10-08",
@@ -17,7 +13,7 @@
     },
     {
       "date": "2026-10-09",
-      "capacity": 180
+      "capacity": 175
     },
     {
       "date": "2026-10-10",
@@ -61,11 +57,11 @@
     },
     {
       "date": "2026-10-20",
-      "capacity": 265
+      "capacity": 263
     },
     {
       "date": "2026-10-21",
-      "capacity": 241
+      "capacity": 239
     },
     {
       "date": "2026-10-22",
@@ -157,11 +153,11 @@
     },
     {
       "date": "2026-11-13",
-      "capacity": 80
+      "capacity": 78
     },
     {
       "date": "2026-11-14",
-      "capacity": 81
+      "capacity": 79
     },
     {
       "date": "2026-11-15",
@@ -193,23 +189,23 @@
     },
     {
       "date": "2026-11-22",
-      "capacity": 256
+      "capacity": 254
     },
     {
       "date": "2026-11-23",
-      "capacity": 190
+      "capacity": 188
     },
     {
       "date": "2026-11-24",
-      "capacity": 136
+      "capacity": 134
     },
     {
       "date": "2026-11-25",
-      "capacity": 136
+      "capacity": 134
     },
     {
       "date": "2026-11-26",
-      "capacity": 158
+      "capacity": 156
     },
     {
       "date": "2026-11-27",
@@ -533,19 +529,19 @@
     },
     {
       "date": "2027-02-15",
-      "capacity": 266
+      "capacity": 262
     },
     {
       "date": "2027-02-16",
-      "capacity": 271
+      "capacity": 267
     },
     {
       "date": "2027-02-17",
-      "capacity": 240
+      "capacity": 236
     },
     {
       "date": "2027-02-18",
-      "capacity": 163
+      "capacity": 161
     },
     {
       "date": "2027-02-19",
