@@ -247,9 +247,9 @@
         return hut.minFree ?? (binary ? 1 : 2);
     }
 
-    // Auckland Council is fetched hourly and the rest every quarter hour, and GitHub often
-    // starts or drops scheduled runs late, so data only counts as stale once a couple of
-    // hourly runs have clearly been missed.
+    // Every source is fetched every quarter hour, but a cron-job.org outage drops back to
+    // GitHub's own scheduler, which often runs late or not at all, so data only counts as
+    // stale once a few hours have clearly been missed.
     const STALE_AFTER_MS = 3 * 3600 * 1000;
 
     // With runs every quarter hour a date alone says little about today, so today gets a time.

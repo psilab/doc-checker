@@ -9,13 +9,14 @@ on:
   # github.event.schedule, so the two strings must match the ones there.
   #
   # GitHub runs these only now and then (3 of ~48 on 2026-10-06), so cron-job.org drives
-  # the real cadence through workflow_dispatch below; these stay as a fallback.
+  # the real cadence through workflow_dispatch below, every source every 15 minutes;
+  # these stay as a fallback.
   schedule:
     - cron: "0 * * * *"
     - cron: "15,30,45 * * * *"
 
-  # Called by cron-job.org with the same split: "doc,newbook" at :15, :30 and :45, and
-  # nothing (every source) on the hour.
+  # Called by cron-job.org every 15 minutes with no inputs, i.e. every source. "sources"
+  # narrows a run, e.g. "doc,newbook" from the Actions tab.
   workflow_dispatch:
     inputs:
       sources:
