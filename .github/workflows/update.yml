@@ -78,7 +78,15 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/
             git commit -m "Update data.json"
-            git push
+            # A push to main while this run was fetching (a config.json edit, 2026-10-10)
+            # rejects ours, so replay the data commit on top and try again. Runs never
+            # overlap, so data/ only conflicts with a hand edit; this run's data wins.
+            for attempt in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && exit 0
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
+            exit 1
           fi
 
       - name: Setup Pages
