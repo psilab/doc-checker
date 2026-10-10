@@ -35,5 +35,5 @@ Runs every quarter hour: on the hour for every source, at :15, :30 and :45 for D
 1. Copy `data/*.json` → `data.old/`
 2. Run `fetch.js` → updates `data/*.json`. Each hut is fetched independently: a failed one keeps its previous file and logs a `::warning::` annotation, never a failed run (a failed run emails the user, and a source down for a day is routine). Every file carries `fetchedAt`, and AKL files a `stale` map of months carried over from an earlier run; the page shows a small "slightly out of date" note from those
 3. Run `notify.js` → compares old vs new, sends Telegram if needed
-4. Commit `data/` if changed
+4. Commit `data/` if changed, rebased onto the latest `main` first so a push made while the run was fetching (a `config.json` edit) does not reject it
 5. Deploy to GitHub Pages
