@@ -2,12 +2,8 @@
   "property": "camp_waipu_cove",
   "categoryId": 6,
   "api": "https://bookingsap.newbook.cloud/online/generated_api_files/93f32891c166cce22b7f15a48ed17d80.php?",
-  "fetchedAt": "2026-10-10T23:49:19.642Z",
+  "fetchedAt": "2026-10-11T00:20:09.090Z",
   "days": [
-    {
-      "date": "2026-10-10",
-      "available": false
-    },
     {
       "date": "2026-10-11",
       "available": true
