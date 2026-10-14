@@ -112,6 +112,16 @@ jobs:
         if: ${{ !cancelled() && steps.deploy.outcome == 'failure' }}
         run: sleep 30
 
+      # Pages can also hang an earlier deploy in "updating_pages" for ten minutes and refuse
+      # every new one meanwhile (2026-10-14 16:15). The data is committed by then and the
+      # next run deploys it 15 minutes later, so a deploy that fails twice is a warning,
+      # not a failed run and an email.
       - name: Retry deploy to GitHub Pages
+        id: retry
         if: ${{ !cancelled() && steps.deploy.outcome == 'failure' }}
+        continue-on-error: true
         uses: actions/deploy-pages@v5
+
+      - name: Report a skipped deploy
+        if: ${{ !cancelled() && steps.retry.outcome == 'failure' }}
+        run: echo "::warning::Pages deploy failed twice; the next run deploys this data"
