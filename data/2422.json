@@ -536,12 +536,12 @@
       "2026-11-20T00:00:00": {
         "Date": "2026-11-20",
         "IsAvailable": true,
-        "TotalAvailable": 15,
-        "TotalAvailableUnit": 63,
+        "TotalAvailable": 13,
+        "TotalAvailableUnit": 62,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 17,
-        "PersonCount": 63,
+        "ReservationCount": 18,
+        "PersonCount": 65,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-16T23:32:44.825Z"
+  "fetchedAt": "2026-10-16T23:45:28.483Z"
 }
