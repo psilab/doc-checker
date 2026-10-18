@@ -1,7 +1,7 @@
 {
   "productId": 220233,
   "maxCapacity": 290,
-  "fetchedAt": "2026-10-18T01:47:43.047Z",
+  "fetchedAt": "2026-10-18T02:03:06.972Z",
   "days": [
     {
       "date": "2026-10-18",
@@ -81,11 +81,11 @@
     },
     {
       "date": "2026-11-06",
-      "capacity": 118
+      "capacity": 116
     },
     {
       "date": "2026-11-07",
-      "capacity": 59
+      "capacity": 57
     },
     {
       "date": "2026-11-08",
