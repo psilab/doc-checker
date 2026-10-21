@@ -35,12 +35,12 @@
       ]
     },
     "Restrictions": {
-      "FutureBookingStarts": "2026-09-30T00:00:00+13:00",
-      "FutureBookingEnds": "2028-04-21T00:00:00+12:00",
+      "FutureBookingStarts": "2026-10-01T00:00:00+13:00",
+      "FutureBookingEnds": "2028-04-22T00:00:00+12:00",
       "FutureBookingStartsId": 31,
       "FutureBookingEndsId": 1010,
-      "StrFutureBookingStartDate": "2026-09-30 00:00:00",
-      "StrFutureBookingEndDate": "2028-04-21 00:00:00"
+      "StrFutureBookingStartDate": "2026-10-01 00:00:00",
+      "StrFutureBookingEndDate": "2028-04-22 00:00:00"
     },
     "Dates": {
       "2026-10-21T00:00:00": {
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-21T10:45:30.994Z"
+  "fetchedAt": "2026-10-21T11:01:05.409Z"
 }
