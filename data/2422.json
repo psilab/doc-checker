@@ -94,21 +94,21 @@
         "UnitCount": 82,
         "ReservationCount": 22,
         "PersonCount": 78,
-        "LockCount": 0,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
       },
       "2026-10-25T00:00:00": {
         "Date": "2026-10-25",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
+        "IsAvailable": true,
+        "TotalAvailable": 5,
         "TotalAvailableUnit": 57,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 23,
-        "PersonCount": 78,
-        "LockCount": 0,
+        "PersonCount": 73,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-21T09:30:48.109Z"
+  "fetchedAt": "2026-10-21T09:45:34.464Z"
 }
