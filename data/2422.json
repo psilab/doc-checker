@@ -859,7 +859,7 @@
         "Date": "2026-12-23",
         "IsAvailable": true,
         "TotalAvailable": 72,
-        "TotalAvailableUnit": 77,
+        "TotalAvailableUnit": 78,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 2,
@@ -901,7 +901,7 @@
         "Date": "2026-12-26",
         "IsAvailable": true,
         "TotalAvailable": 42,
-        "TotalAvailableUnit": 71,
+        "TotalAvailableUnit": 72,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 8,
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-26T10:01:04.687Z"
+  "fetchedAt": "2026-10-26T10:15:32.937Z"
 }
