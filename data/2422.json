@@ -1,7 +1,7 @@
 {
   "FacilityId": 2422,
-  "StartDate": "2026-10-27",
-  "EndDate": "2027-02-23",
+  "StartDate": "2026-10-28",
+  "EndDate": "2027-02-24",
   "Facility": {
     "FacilityId": 2422,
     "Name": "Pinnacles Hut (Kauaeranga Kauri Trail) Coromandel",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2028-04-28 00:00:00"
     },
     "Dates": {
-      "2026-10-27T00:00:00": {
-        "Date": "2026-10-27",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 0,
-        "MaxOccupancy": 78,
-        "UnitCount": 82,
-        "ReservationCount": 2,
-        "PersonCount": 78,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-10-28T00:00:00": {
         "Date": "2026-10-28",
         "IsAvailable": false,
@@ -663,7 +649,7 @@
         "Date": "2026-12-10",
         "IsAvailable": true,
         "TotalAvailable": 32,
-        "TotalAvailableUnit": 76,
+        "TotalAvailableUnit": 75,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 4,
@@ -1722,9 +1708,23 @@
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
+      },
+      "2027-02-24T00:00:00": {
+        "Date": "2027-02-24",
+        "IsAvailable": true,
+        "TotalAvailable": 72,
+        "TotalAvailableUnit": 79,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 1,
+        "PersonCount": 6,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
       }
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-10-27T23:45:31.368Z"
+  "fetchedAt": "2026-10-28T00:01:00.931Z"
 }
