@@ -1,7 +1,7 @@
 {
   "FacilityId": 2422,
-  "StartDate": "2026-11-05",
-  "EndDate": "2027-03-04",
+  "StartDate": "2026-11-06",
+  "EndDate": "2027-03-05",
   "Facility": {
     "FacilityId": 2422,
     "Name": "Pinnacles Hut (Kauaeranga Kauri Trail) Coromandel",
@@ -43,29 +43,15 @@
       "StrFutureBookingEndDate": "2028-05-06 00:00:00"
     },
     "Dates": {
-      "2026-11-05T00:00:00": {
-        "Date": "2026-11-05",
-        "IsAvailable": false,
-        "TotalAvailable": 0,
-        "TotalAvailableUnit": 75,
-        "MaxOccupancy": 78,
-        "UnitCount": 82,
-        "ReservationCount": 5,
-        "PersonCount": 78,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-11-06T00:00:00": {
         "Date": "2026-11-06",
         "IsAvailable": true,
-        "TotalAvailable": 5,
-        "TotalAvailableUnit": 54,
+        "TotalAvailable": 6,
+        "TotalAvailableUnit": 55,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 26,
-        "PersonCount": 73,
+        "ReservationCount": 25,
+        "PersonCount": 72,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -284,12 +270,12 @@
       "2026-11-22T00:00:00": {
         "Date": "2026-11-22",
         "IsAvailable": true,
-        "TotalAvailable": 26,
-        "TotalAvailableUnit": 66,
+        "TotalAvailable": 25,
+        "TotalAvailableUnit": 65,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 14,
-        "PersonCount": 52,
+        "ReservationCount": 15,
+        "PersonCount": 53,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -368,12 +354,12 @@
       "2026-11-28T00:00:00": {
         "Date": "2026-11-28",
         "IsAvailable": true,
-        "TotalAvailable": 6,
-        "TotalAvailableUnit": 69,
+        "TotalAvailable": 5,
+        "TotalAvailableUnit": 68,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 11,
-        "PersonCount": 72,
+        "ReservationCount": 12,
+        "PersonCount": 73,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1722,9 +1708,23 @@
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
+      },
+      "2027-03-05T00:00:00": {
+        "Date": "2027-03-05",
+        "IsAvailable": true,
+        "TotalAvailable": 76,
+        "TotalAvailableUnit": 79,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 1,
+        "PersonCount": 2,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
       }
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-05T23:45:33.168Z"
+  "fetchedAt": "2026-11-06T00:01:01.440Z"
 }
