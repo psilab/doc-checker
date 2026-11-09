@@ -1,7 +1,7 @@
 {
   "FacilityId": 2422,
-  "StartDate": "2026-11-08",
-  "EndDate": "2027-03-07",
+  "StartDate": "2026-11-09",
+  "EndDate": "2027-03-08",
   "Facility": {
     "FacilityId": 2422,
     "Name": "Pinnacles Hut (Kauaeranga Kauri Trail) Coromandel",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2028-05-09 00:00:00"
     },
     "Dates": {
-      "2026-11-08T00:00:00": {
-        "Date": "2026-11-08",
-        "IsAvailable": true,
-        "TotalAvailable": 51,
-        "TotalAvailableUnit": 64,
-        "MaxOccupancy": 78,
-        "UnitCount": 82,
-        "ReservationCount": 16,
-        "PersonCount": 27,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-11-09T00:00:00": {
         "Date": "2026-11-09",
         "IsAvailable": false,
@@ -317,8 +303,8 @@
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 19,
-        "PersonCount": 58,
-        "LockCount": 1,
+        "PersonCount": 59,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
@@ -1376,12 +1362,12 @@
       "2027-02-11T00:00:00": {
         "Date": "2027-02-11",
         "IsAvailable": true,
-        "TotalAvailable": 71,
-        "TotalAvailableUnit": 77,
+        "TotalAvailable": 72,
+        "TotalAvailableUnit": 78,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 3,
-        "PersonCount": 7,
+        "ReservationCount": 2,
+        "PersonCount": 6,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1722,9 +1708,23 @@
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
+      },
+      "2027-03-08T00:00:00": {
+        "Date": "2027-03-08",
+        "IsAvailable": true,
+        "TotalAvailable": 69,
+        "TotalAvailableUnit": 78,
+        "MaxOccupancy": 78,
+        "UnitCount": 82,
+        "ReservationCount": 2,
+        "PersonCount": 9,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
       }
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-08T23:45:29.940Z"
+  "fetchedAt": "2026-11-09T00:01:05.532Z"
 }
