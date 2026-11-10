@@ -1,7 +1,7 @@
 {
   "FacilityId": 2374,
-  "StartDate": "2026-11-09",
-  "EndDate": "2027-03-08",
+  "StartDate": "2026-11-10",
+  "EndDate": "2027-03-09",
   "Facility": {
     "FacilityId": 2374,
     "Name": "Cape Brett Hut",
@@ -43,20 +43,6 @@
       "StrFutureBookingEndDate": "2028-05-10 00:00:00"
     },
     "Dates": {
-      "2026-11-09T00:00:00": {
-        "Date": "2026-11-09",
-        "IsAvailable": true,
-        "TotalAvailable": 22,
-        "TotalAvailableUnit": 22,
-        "MaxOccupancy": 23,
-        "UnitCount": 23,
-        "ReservationCount": 1,
-        "PersonCount": 1,
-        "LockCount": null,
-        "InSeason": true,
-        "IsBlocked": false,
-        "IsWalkin": false
-      },
       "2026-11-10T00:00:00": {
         "Date": "2026-11-10",
         "IsAvailable": true,
@@ -564,12 +550,12 @@
       "2026-12-16T00:00:00": {
         "Date": "2026-12-16",
         "IsAvailable": true,
-        "TotalAvailable": 8,
-        "TotalAvailableUnit": 19,
+        "TotalAvailable": 10,
+        "TotalAvailableUnit": 20,
         "MaxOccupancy": 23,
         "UnitCount": 23,
-        "ReservationCount": 4,
-        "PersonCount": 15,
+        "ReservationCount": 3,
+        "PersonCount": 13,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -858,12 +844,12 @@
       "2027-01-06T00:00:00": {
         "Date": "2027-01-06",
         "IsAvailable": true,
-        "TotalAvailable": 3,
-        "TotalAvailableUnit": 15,
+        "TotalAvailable": 1,
+        "TotalAvailableUnit": 14,
         "MaxOccupancy": 23,
         "UnitCount": 23,
-        "ReservationCount": 8,
-        "PersonCount": 20,
+        "ReservationCount": 9,
+        "PersonCount": 22,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1722,9 +1708,23 @@
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
+      },
+      "2027-03-09T00:00:00": {
+        "Date": "2027-03-09",
+        "IsAvailable": true,
+        "TotalAvailable": 22,
+        "TotalAvailableUnit": 22,
+        "MaxOccupancy": 23,
+        "UnitCount": 23,
+        "ReservationCount": 1,
+        "PersonCount": 1,
+        "LockCount": null,
+        "InSeason": true,
+        "IsBlocked": false,
+        "IsWalkin": false
       }
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-09T23:45:33.570Z"
+  "fetchedAt": "2026-11-10T00:01:05.502Z"
 }
