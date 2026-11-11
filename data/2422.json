@@ -816,12 +816,12 @@
       "2027-01-05T00:00:00": {
         "Date": "2027-01-05",
         "IsAvailable": true,
-        "TotalAvailable": 64,
+        "TotalAvailable": 60,
         "TotalAvailableUnit": 73,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 6,
-        "PersonCount": 14,
+        "ReservationCount": 7,
+        "PersonCount": 18,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1167,7 +1167,7 @@
         "Date": "2027-01-30",
         "IsAvailable": true,
         "TotalAvailable": 6,
-        "TotalAvailableUnit": 64,
+        "TotalAvailableUnit": 63,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 16,
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-11T01:45:31.256Z"
+  "fetchedAt": "2026-11-11T02:00:57.461Z"
 }
