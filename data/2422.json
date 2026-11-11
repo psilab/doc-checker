@@ -270,13 +270,13 @@
       "2026-11-27T00:00:00": {
         "Date": "2026-11-27",
         "IsAvailable": true,
-        "TotalAvailable": 16,
-        "TotalAvailableUnit": 55,
+        "TotalAvailable": 14,
+        "TotalAvailableUnit": 54,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 25,
         "PersonCount": 62,
-        "LockCount": null,
+        "LockCount": 2,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
@@ -466,13 +466,13 @@
       "2026-12-11T00:00:00": {
         "Date": "2026-12-11",
         "IsAvailable": true,
-        "TotalAvailable": 12,
-        "TotalAvailableUnit": 59,
+        "TotalAvailable": 14,
+        "TotalAvailableUnit": 60,
         "MaxOccupancy": 78,
         "UnitCount": 82,
         "ReservationCount": 20,
         "PersonCount": 64,
-        "LockCount": 2,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
@@ -522,12 +522,12 @@
       "2026-12-15T00:00:00": {
         "Date": "2026-12-15",
         "IsAvailable": true,
-        "TotalAvailable": 62,
-        "TotalAvailableUnit": 75,
+        "TotalAvailable": 68,
+        "TotalAvailableUnit": 76,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 5,
-        "PersonCount": 16,
+        "ReservationCount": 4,
+        "PersonCount": 10,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -550,12 +550,12 @@
       "2026-12-17T00:00:00": {
         "Date": "2026-12-17",
         "IsAvailable": true,
-        "TotalAvailable": 40,
-        "TotalAvailableUnit": 71,
+        "TotalAvailable": 31,
+        "TotalAvailableUnit": 69,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 9,
-        "PersonCount": 38,
+        "ReservationCount": 11,
+        "PersonCount": 47,
         "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-11T20:15:29.539Z"
+  "fetchedAt": "2026-11-11T21:00:58.094Z"
 }
