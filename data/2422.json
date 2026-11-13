@@ -218,9 +218,9 @@
         "TotalAvailableUnit": 73,
         "MaxOccupancy": 78,
         "UnitCount": 82,
-        "ReservationCount": 6,
-        "PersonCount": 33,
-        "LockCount": 1,
+        "ReservationCount": 7,
+        "PersonCount": 34,
+        "LockCount": null,
         "InSeason": true,
         "IsBlocked": false,
         "IsWalkin": false
@@ -1726,5 +1726,5 @@
     },
     "TimebaseMaxHours": 0
   },
-  "fetchedAt": "2026-11-13T19:45:33.263Z"
+  "fetchedAt": "2026-11-13T20:01:01.155Z"
 }
