@@ -1,27 +1,23 @@
 {
   "productId": 220233,
   "maxCapacity": 290,
-  "fetchedAt": "2026-11-20T23:47:08.649Z",
+  "fetchedAt": "2026-11-21T00:02:35.795Z",
   "days": [
-    {
-      "date": "2026-11-20",
-      "capacity": 0
-    },
     {
       "date": "2026-11-21",
       "capacity": 0
     },
     {
       "date": "2026-11-22",
-      "capacity": 229
+      "capacity": 226
     },
     {
       "date": "2026-11-23",
-      "capacity": 184
+      "capacity": 182
     },
     {
       "date": "2026-11-24",
-      "capacity": 119
+      "capacity": 117
     },
     {
       "date": "2026-11-25",
@@ -49,15 +45,15 @@
     },
     {
       "date": "2026-12-01",
-      "capacity": 110
+      "capacity": 108
     },
     {
       "date": "2026-12-02",
-      "capacity": 87
+      "capacity": 85
     },
     {
       "date": "2026-12-03",
-      "capacity": 89
+      "capacity": 87
     },
     {
       "date": "2026-12-04",
