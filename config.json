@@ -41,7 +41,10 @@
       "property": "camp_waipu_cove",
       "id": 6,
       "name": "Camp Waipu Cove — Non Powered Site",
-      "watchDates": []
+      "watchDates": [],
+      "watchStays": [
+        { "nights": 2, "from": "2027-02-06", "to": "2027-02-07" }
+      ]
     }
   ]
 }
